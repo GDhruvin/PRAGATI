@@ -185,9 +185,6 @@ export default function NewsPage() {
                   <p className="text-muted-foreground mb-4 line-clamp-3">
                     {item.news_object.text}
                   </p>
-                  <Button variant="outline" size="sm">
-                    Read More
-                  </Button>
                 </CardContent>
               </Card>
             ))
