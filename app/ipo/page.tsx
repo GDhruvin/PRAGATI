@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -38,7 +38,7 @@ const currentIPOs = [
     status: "Open",
     statusColor: "bg-green-500",
   },
-]
+];
 
 const upcomingIPOs = [
   {
@@ -71,9 +71,9 @@ const upcomingIPOs = [
     status: "Upcoming",
     statusColor: "bg-blue-500",
   },
-]
+];
 
-function IPOCard({ ipo }: { ipo: typeof currentIPOs[0] }) {
+function IPOCard({ ipo }: { ipo: (typeof currentIPOs)[0] }) {
   return (
     <Card className="hover:shadow-lg transition-shadow">
       <CardHeader>
@@ -120,7 +120,7 @@ function IPOCard({ ipo }: { ipo: typeof currentIPOs[0] }) {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 export default function IPOPage() {
@@ -169,5 +169,5 @@ export default function IPOPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
