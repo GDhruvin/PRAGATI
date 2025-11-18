@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const routes = [
   { name: "Home", href: "/" },
   { name: "News", href: "/news" },
-  { name: "IPO", href: "/ipo" },
+  { name: "Members", href: "/members" },
   { name: "Monthly Commentary", href: "/commentary" },
 ];
 

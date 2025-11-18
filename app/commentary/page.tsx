@@ -1,10 +1,16 @@
-"use client"
+"use client";
 
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { FileText, TrendingDown, TrendingUp } from "lucide-react"
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { FileText, TrendingDown, TrendingUp, AlertCircle } from "lucide-react";
 
 const fundStats = [
   { metric: "Total AUM", value: "₹85.6 Cr" },
@@ -13,7 +19,7 @@ const fundStats = [
   { metric: "P/B Ratio", value: "7.28" },
   { metric: "Div Yield", value: "1.06%" },
   { metric: "Std Dev", value: "16.25%" },
-]
+];
 
 const keyMetrics = [
   { item: "FII outflows", value: "₹30,000+ crores", negative: true },
@@ -21,7 +27,7 @@ const keyMetrics = [
   { item: "Rupee (all-time low)", value: "88.8/USD", negative: true },
   { item: "Gold", value: "₹1.17 lakh", negative: false },
   { item: "Silver", value: "₹1,44,200", negative: false },
-]
+];
 
 export default function CommentaryPage() {
   return (
@@ -41,30 +47,33 @@ export default function CommentaryPage() {
           </div>
         </div>
 
-        <div className="container space-y-8 py-8 px-4">
+        <div className="space-y-8 py-8 px-4">
+          {/* Existing Market Commentary */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">September 2025 Market Analysis</CardTitle>
-              <CardDescription>Monthly performance review and market insights</CardDescription>
+              <CardTitle className="text-2xl">
+                October 2025 Market Analysis
+              </CardTitle>
+              <CardDescription>
+                Monthly performance review and market insights
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="prose prose-slate dark:prose-invert max-w-none">
                 <p className="text-muted-foreground leading-relaxed">
-                  September 2025 proved to be a volatile month for Indian equities. After gaining over 3% by
-                  mid-September, both the Nifty and Sensex lost momentum, ultimately closing the month with a
-                  marginal decline of <span className="text-red-600 font-semibold">-0.1%</span>.
+                  Indian equities staged a strong rebound in October 2025, with
+                  the Nifty 50 and Sensex rising about 4.5%, marking their best
+                  monthly gain since March...
                 </p>
-
-                <p className="text-muted-foreground leading-relaxed">
-                  Selling pressure was pronounced in consumer, realty, and IT sectors, though autos, banks, and
-                  metals provided some cushion. Meanwhile, precious metals surged to historic highs, reflecting
-                  strong safe-haven demand.
-                </p>
+                {/* Rest of your commentary */}
               </div>
 
+              {/* Key Market Movements card remains unchanged */}
               <Card className="bg-muted/50 border-2">
                 <CardHeader>
-                  <CardTitle className="text-lg">Key Market Movements</CardTitle>
+                  <CardTitle className="text-lg">
+                    Key Market Movements
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -87,66 +96,177 @@ export default function CommentaryPage() {
                   </div>
                 </CardContent>
               </Card>
-
-              <div className="prose prose-slate dark:prose-invert max-w-none">
-                <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Market Outlook</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Looking ahead, market sentiment remains cautious as investors await clearer signals on monetary
-                  policy and global economic trends. The sustained domestic institutional support continues to
-                  provide a floor to the markets, even as foreign investors remain net sellers.
-                </p>
-
-                <p className="text-muted-foreground leading-relaxed">
-                  The PRAGATI Fund maintained its disciplined approach to portfolio construction, focusing on
-                  quality businesses with strong fundamentals. Our diversified sector allocation helped mitigate
-                  volatility during the month.
-                </p>
-              </div>
             </CardContent>
           </Card>
 
+          {/* ==================== NEW SECTIONS FROM FACTSHEET ==================== */}
+
+          {/* Investment Objective */}
           <Card>
             <CardHeader>
-              <CardTitle>Fund Statistics</CardTitle>
-              <CardDescription>Key performance and risk metrics</CardDescription>
+              <CardTitle>Investment Objective</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="overflow-x-auto">
+              <p className="text-muted-foreground leading-relaxed">
+                To provide our investors with an opportunity of long-term
+                capital appreciation by investing in a diversified portfolio
+                comprising of Large and Mid-Cap Securities.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Portfolio Statistics + Key Facts – Side by Side */}
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Portfolio Statistics – Left */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Portfolio Statistics</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-1/2">Metric</TableHead>
-                      <TableHead className="text-right">Value</TableHead>
-                    </TableRow>
-                  </TableHeader>
                   <TableBody>
-                    {fundStats.map((stat) => (
-                      <TableRow key={stat.metric}>
-                        <TableCell className="font-medium">{stat.metric}</TableCell>
-                        <TableCell className="text-right text-lg font-semibold">
-                          {stat.value}
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Number of Holdings
+                      </TableCell>
+                      <TableCell className="text-right">36</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Portfolio Beta
+                      </TableCell>
+                      <TableCell className="text-right">0.91</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Portfolio Std Dev (Annualised)
+                      </TableCell>
+                      <TableCell className="text-right">16.10%</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Dividend Yield (TTM)
+                      </TableCell>
+                      <TableCell className="text-right">0.89%</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Portfolio P/E
+                      </TableCell>
+                      <TableCell className="text-right">36.45</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Portfolio P/B
+                      </TableCell>
+                      <TableCell className="text-right">7.32</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Top 5 Holdings
+                      </TableCell>
+                      <TableCell className="text-right">32.32%</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Benchmark Index
+                      </TableCell>
+                      <TableCell className="text-right">Nifty 50</TableCell>
+                    </TableRow>
                   </TableBody>
                 </Table>
+              </CardContent>
+            </Card>
+
+            {/* Key Facts – Right */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Key Facts</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-medium">Launch Date</TableCell>
+                      <TableCell className="text-right">
+                        26 August 2019
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        First Purchase Date
+                      </TableCell>
+                      <TableCell className="text-right">
+                        1 October 2019
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Domicile</TableCell>
+                      <TableCell className="text-right">India</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        NAV Publication
+                      </TableCell>
+                      <TableCell className="text-right">Monthly</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        NAV Estimation
+                      </TableCell>
+                      <TableCell className="text-right">Weekly</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Capital Structure and Fees */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Capital Structure and Fees</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <p className="font-medium">Annual Management Fee</p>
+                <p className="text-muted-foreground">
+                  There is no annual management fee payable.
+                </p>
+              </div>
+              <div>
+                <p className="font-medium">Performance Fee</p>
+                <p className="text-muted-foreground">
+                  There is no performance fee payable.
+                </p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/50">
-            <CardContent className="pt-6">
-              <div className="flex items-start gap-3">
-                <FileText className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-medium mb-1">Disclaimer</p>
-                  <p className="text-sm text-muted-foreground">
-                    This commentary is for informational purposes only and should not be construed as
-                    investment advice. Past performance is not indicative of future results. All investments
-                    involve risk, and the value of investments may fluctuate.
-                  </p>
-                </div>
+          {/* Full Disclaimer */}
+          <Card className="border-amber-500/50 bg-amber-50/10">
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <AlertCircle className="h-5 w-5 text-amber-600" />
+                <CardTitle>Disclaimer</CardTitle>
               </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Members of The Finance Club may/may not hold a stake in the
+                companies mentioned.
+                <br />
+                <br />
+                We may / may not have traded in the mentioned companies in the
+                last 3 months.
+                <br />
+                <br />
+                We are not SEBI registered research analyst.
+                <br />
+                <br />
+                Buy / Sell securities after thorough analysis and at your own
+                risk.
+              </p>
             </CardContent>
           </Card>
         </div>
@@ -154,5 +274,5 @@ export default function CommentaryPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

@@ -147,7 +147,7 @@ export default function NewsPage() {
           </div>
         </div>
 
-        <div className="container space-y-6 py-8 px-4">
+        <div className="space-y-6 py-8 px-4">
           {news.length === 0 ? (
             <Card>
               <CardContent className="text-center py-10">
