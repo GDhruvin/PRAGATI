@@ -62,7 +62,7 @@ export function Navbar() {
       </div>
 
       <div className="md:hidden border-t">
-        <div className="container flex items-center gap-4 overflow-x-auto px-4 py-2">
+        <div className="flex items-center gap-4 overflow-x-auto px-4 py-2">
           {routes.map((route) => (
             <Link
               key={route.href}

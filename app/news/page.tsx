@@ -121,7 +121,7 @@ export default function NewsPage() {
 
       <main className="flex-1 pt-16">
         <div className="border-b bg-muted/50 py-12">
-          <div className="container px-4">
+          <div className="px-4">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <Newspaper className="h-8 w-8 text-primary" />

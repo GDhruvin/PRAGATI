@@ -227,7 +227,7 @@ export default function ClubMembersPage() {
       <main className="flex-1 pt-16">
         {/* Hero Section */}
         <div className="border-b bg-muted/50 py-16">
-          <div className="container px-4 text-center">
+          <div className="px-4 text-center">
             <div className="flex flex-col items-center gap-5">
               <div className="flex items-center gap-4 mb-4 justify-center">
                 <User className="h-12 w-12 text-primary" />
