@@ -167,7 +167,7 @@ export default function NewsPage() {
                       </CardTitle>
                       <div className="flex items-center gap-3 text-sm">
                         <CardDescription>
-                          {formatDate(item.publish_date)}
+                          {item.category}
                         </CardDescription>
                         <span
                           className={`font-medium ${getSentimentColor(

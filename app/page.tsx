@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Ticker } from "@/components/ticker";
+import { FactSheetHeader } from "@/components/fact-sheet-header";
 import {
   Card,
   CardContent,
@@ -34,95 +35,65 @@ import {
   BarChart,
   Bar,
 } from "recharts";
-import { TrendingUp, TrendingDown } from "lucide-react";
+import { TrendingUp, TrendingDown, FileText, AlertCircle, Loader2 } from "lucide-react";
+
+const keyMetrics = [
+  { item: "FII outflows", value: "₹30,000+ crores", negative: true },
+  { item: "DII inflows", value: "₹60,000+ crores", negative: false },
+  { item: "Rupee (all-time low)", value: "88.8/USD", negative: true },
+  { item: "Gold", value: "₹1.17 lakh", negative: false },
+  { item: "Silver", value: "₹1,44,200", negative: false },
+];
 
 export default function Home() {
   const [portfolioData, setPortfolioData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   const navPerformanceData = [
-    { date: "Aug 19", PRAGATI: 10.0, Nifty50: 100.0 },
-    { date: "Sep 19", PRAGATI: 10.3, Nifty50: 101.2 },
-    { date: "Oct 19", PRAGATI: 10.8, Nifty50: 102.8 },
-    { date: "Nov 19", PRAGATI: 11.1, Nifty50: 104.5 },
-    { date: "Dec 19", PRAGATI: 11.6, Nifty50: 106.1 },
-    { date: "Jan 20", PRAGATI: 11.4, Nifty50: 103.8 }, // COVID dip start
-    { date: "Feb 20", PRAGATI: 10.9, Nifty50: 98.5 },
-    { date: "Mar 20", PRAGATI: 9.2, Nifty50: 85.3 }, // Crash
-    { date: "Apr 20", PRAGATI: 10.8, Nifty50: 94.2 },
-    { date: "May 20", PRAGATI: 11.5, Nifty50: 96.8 },
-    { date: "Jun 20", PRAGATI: 12.7, Nifty50: 102.4 },
-    { date: "Jul 20", PRAGATI: 13.9, Nifty50: 108.1 },
-    { date: "Aug 20", PRAGATI: 14.6, Nifty50: 110.9 },
-    { date: "Sep 20", PRAGATI: 14.3, Nifty50: 109.7 },
-    { date: "Oct 20", PRAGATI: 15.1, Nifty50: 112.3 },
-    { date: "Nov 20", PRAGATI: 16.8, Nifty50: 119.8 },
-    { date: "Dec 20", PRAGATI: 18.2, Nifty50: 128.6 },
-    { date: "Jan 21", PRAGATI: 17.8, Nifty50: 125.4 },
-    { date: "Feb 21", PRAGATI: 18.5, Nifty50: 130.2 },
-    { date: "Mar 21", PRAGATI: 19.3, Nifty50: 134.1 },
-    { date: "Apr 21", PRAGATI: 19.0, Nifty50: 132.8 },
-    { date: "May 21", PRAGATI: 20.1, Nifty50: 138.9 },
-    { date: "Jun 21", PRAGATI: 20.8, Nifty50: 141.2 },
-    { date: "Jul 21", PRAGATI: 21.4, Nifty50: 143.7 },
-    { date: "Aug 21", PRAGATI: 22.6, Nifty50: 148.3 },
-    { date: "Sep 21", PRAGATI: 22.1, Nifty50: 146.9 },
-    { date: "Oct 21", PRAGATI: 23.5, Nifty50: 152.1 },
-    { date: "Nov 21", PRAGATI: 22.9, Nifty50: 149.8 },
-    { date: "Dec 21", PRAGATI: 23.8, Nifty50: 153.4 },
-    { date: "Jan 22", PRAGATI: 23.2, Nifty50: 150.1 },
-    { date: "Feb 22", PRAGATI: 24.1, Nifty50: 154.7 },
-    { date: "Mar 22", PRAGATI: 25.3, Nifty50: 160.2 },
-    { date: "Apr 22", PRAGATI: 24.7, Nifty50: 157.8 },
-    { date: "May 22", PRAGATI: 24.1, Nifty50: 154.3 },
-    { date: "Jun 22", PRAGATI: 23.6, Nifty50: 151.9 },
-    { date: "Jul 22", PRAGATI: 25.2, Nifty50: 158.6 },
-    { date: "Aug 22", PRAGATI: 26.8, Nifty50: 164.2 },
-    { date: "Sep 22", PRAGATI: 26.1, Nifty50: 161.4 },
-    { date: "Oct 22", PRAGATI: 27.4, Nifty50: 166.8 },
-    { date: "Nov 22", PRAGATI: 28.3, Nifty50: 170.5 },
-    { date: "Dec 22", PRAGATI: 27.9, Nifty50: 168.9 },
-    { date: "Jan 23", PRAGATI: 27.3, Nifty50: 165.2 },
-    { date: "Feb 23", PRAGATI: 28.1, Nifty50: 169.1 },
-    { date: "Mar 23", PRAGATI: 28.9, Nifty50: 172.4 },
-    { date: "Apr 23", PRAGATI: 30.2, Nifty50: 178.3 },
-    { date: "May 23", PRAGATI: 31.1, Nifty50: 182.7 },
-    { date: "Jun 23", PRAGATI: 32.5, Nifty50: 188.9 },
-    { date: "Jul 23", PRAGATI: 33.8, Nifty50: 194.2 },
-    { date: "Aug 23", PRAGATI: 32.9, Nifty50: 190.1 },
-    { date: "Sep 23", PRAGATI: 34.2, Nifty50: 195.8 },
-    { date: "Oct 23", PRAGATI: 33.6, Nifty50: 192.4 },
-    { date: "Nov 23", PRAGATI: 35.1, Nifty50: 198.7 },
-    { date: "Dec 23", PRAGATI: 37.2, Nifty50: 206.3 },
-    { date: "Jan 24", PRAGATI: 36.5, Nifty50: 202.1 },
-    { date: "Feb 24", PRAGATI: 38.1, Nifty50: 209.8 },
-    { date: "Mar 24", PRAGATI: 39.8, Nifty50: 216.4 },
-    { date: "Apr 24", PRAGATI: 38.9, Nifty50: 212.3 },
-    { date: "May 24", PRAGATI: 40.2, Nifty50: 218.9 },
-    { date: "Jun 24", PRAGATI: 41.8, Nifty50: 225.6 },
-    { date: "Jul 24", PRAGATI: 40.9, Nifty50: 221.4 },
-    { date: "Aug 24", PRAGATI: 42.3, Nifty50: 228.1 },
-    { date: "Sep 24", PRAGATI: 41.6, Nifty50: 224.7 },
-    { date: "Oct 24", PRAGATI: 20.8, Nifty50: 132.5 }, // Switch to absolute NAV in 2024
-    { date: "Nov 24", PRAGATI: 21.3, Nifty50: 135.8 },
-    { date: "Dec 24", PRAGATI: 21.9, Nifty50: 139.2 },
-    { date: "Jan 25", PRAGATI: 20.7, Nifty50: 134.6 },
-    { date: "Feb 25", PRAGATI: 21.5, Nifty50: 138.9 },
-    { date: "Mar 25", PRAGATI: 22.4, Nifty50: 143.1 },
-    { date: "Apr 25", PRAGATI: 21.8, Nifty50: 140.2 },
-    { date: "May 25", PRAGATI: 22.7, Nifty50: 145.8 },
-    { date: "Jun 25", PRAGATI: 23.6, Nifty50: 150.3 },
-    { date: "Jul 25", PRAGATI: 22.9, Nifty50: 147.1 },
-    { date: "Aug 25", PRAGATI: 23.8, Nifty50: 152.7 },
-    { date: "Sep 25", PRAGATI: 21.2, Nifty50: 138.4 },
-    { date: "Oct 25", PRAGATI: 22.1, Nifty50: 142.6 },
+    { date: "Oct-2019", PRAGATI: 0.0, Nifty50: 0.0 },
+    { date: "Dec-2019", PRAGATI: 8.0, Nifty50: 5.0 },
+    { date: "Feb-2020", PRAGATI: -1.0, Nifty50: -5.0 },
+    { date: "Mar-2020", PRAGATI: -2.0, Nifty50: -28.0 },
+    { date: "Apr-2020", PRAGATI: 0.0, Nifty50: -15.0 },
+    { date: "Jun-2020", PRAGATI: 5.0, Nifty50: 5.0 },
+    { date: "Aug-2020", PRAGATI: 8.0, Nifty50: 10.0 },
+    { date: "Oct-2020", PRAGATI: 10.0, Nifty50: 15.0 },
+    { date: "Dec-2020", PRAGATI: 18.0, Nifty50: 25.0 },
+    { date: "Feb-2021", PRAGATI: 22.0, Nifty50: 28.0 },
+    { date: "Apr-2021", PRAGATI: 23.0, Nifty50: 29.0 },
+    { date: "Jun-2021", PRAGATI: 30.0, Nifty50: 35.0 },
+    { date: "Aug-2021", PRAGATI: 32.0, Nifty50: 38.0 },
+    { date: "Oct-2021", PRAGATI: 42.0, Nifty50: 52.0 },
+    { date: "Dec-2021", PRAGATI: 40.0, Nifty50: 50.0 },
+    { date: "Feb-2022", PRAGATI: 38.0, Nifty50: 48.0 },
+    { date: "Apr-2022", PRAGATI: 38.0, Nifty50: 48.0 },
+    { date: "Jun-2022", PRAGATI: 30.0, Nifty50: 40.0 },
+    { date: "Aug-2022", PRAGATI: 35.0, Nifty50: 50.0 },
+    { date: "Oct-2022", PRAGATI: 38.0, Nifty50: 55.0 },
+    { date: "Dec-2022", PRAGATI: 36.0, Nifty50: 52.0 },
+    { date: "Feb-2023", PRAGATI: 35.0, Nifty50: 52.0 },
+    { date: "Apr-2023", PRAGATI: 45.0, Nifty50: 60.0 },
+    { date: "Jun-2023", PRAGATI: 52.0, Nifty50: 65.0 },
+    { date: "Aug-2023", PRAGATI: 55.0, Nifty50: 68.0 },
+    { date: "Oct-2023", PRAGATI: 55.0, Nifty50: 65.0 },
+    { date: "Dec-2023", PRAGATI: 65.0, Nifty50: 80.0 },
+    { date: "Feb-2024", PRAGATI: 75.0, Nifty50: 90.0 },
+    { date: "Apr-2024", PRAGATI: 85.0, Nifty50: 95.0 },
+    { date: "Jun-2024", PRAGATI: 100.0, Nifty50: 110.0 },
+    { date: "Aug-2024", PRAGATI: 110.0, Nifty50: 120.0 },
+    { date: "Oct-2024", PRAGATI: 115.0, Nifty50: 125.0 },
+    { date: "Dec-2024", PRAGATI: 105.0, Nifty50: 115.0 },
+    { date: "Feb-2025", PRAGATI: 95.0, Nifty50: 105.0 },
+    { date: "Apr-2025", PRAGATI: 105.0, Nifty50: 115.0 },
+    { date: "Jun-2025", PRAGATI: 115.0, Nifty50: 120.0 },
+    { date: "Aug-2025", PRAGATI: 112.0, Nifty50: 115.0 },
+    { date: "Oct-2025", PRAGATI: 120.0, Nifty50: 125.0 },
   ];
   const returnsComparisonData = [
-    { period: "1 Month", PRAGATI: 4.5, Nifty50: 3.8 },
-    { period: "3 Months", PRAGATI: 12.3, Nifty50: 10.1 },
-    { period: "6 Months", PRAGATI: 18.7, Nifty50: 16.4 },
-    { period: "1 Year", PRAGATI: 32.8, Nifty50: 28.9 },
-    { period: "Since Inception", PRAGATI: 121.0, Nifty50: 42.6 },
+    { period: "Overall", PRAGATI: 120.97, Nifty50: 126.43 },
+    { period: "Last Year", PRAGATI: 6.13, Nifty50: 6.27 },
+    { period: "Last 3 Months", PRAGATI: 3.84, Nifty50: 3.85 },
+    { period: "Last Month", PRAGATI: 4.43, Nifty50: 4.51 },
   ];
 
   useEffect(() => {
@@ -142,16 +113,14 @@ export default function Home() {
     fetchPortfolio();
   }, []);
 
-  console.log("portfolioData", portfolioData);
-
   const sectorData = (() => {
     if (!portfolioData || portfolioData.length === 0) return [];
 
     const industryCounts: Record<string, number> = {};
     portfolioData.forEach((item) => {
-      if (item.industry) {
-        industryCounts[item.industry] =
-          (industryCounts[item.industry] || 0) + 1;
+      if (item.sector) {
+        industryCounts[item.sector] =
+          (industryCounts[item.sector] || 0) + 1;
       }
     });
 
@@ -181,7 +150,8 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-1 pt-16">
-        <Ticker />
+        <FactSheetHeader />
+        <Ticker data={portfolioData} />
 
         <div className="w-full space-y-8 py-8 px-6">
           <div className="grid gap-6 md:grid-cols-3">
@@ -232,7 +202,9 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               {loading ? (
-                <p>Loading portfolio...</p>
+                <div className="flex h-40 w-full items-center justify-center">
+                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                </div>
               ) : (
                 <div className="overflow-x-auto">
                   <Table>
@@ -240,23 +212,11 @@ export default function Home() {
                       <TableRow>
                         <TableHead>Stock Symbol</TableHead>
                         <TableHead>Company Name</TableHead>
-                        <TableHead>Sector</TableHead>
-                        <TableHead className="text-right">
-                          Current Price (₹)
-                        </TableHead>
-                        <TableHead className="text-right">
-                          RSI (Strength)
-                        </TableHead>
-                        <TableHead className="text-right">
-                          MACD (Trend)
-                        </TableHead>
-                        <TableHead className="text-right">
-                          EMA 20-Day Avg
-                        </TableHead>
-                        <TableHead className="text-right">
-                          SMA 50-Day Avg
-                        </TableHead>
-                        <TableHead className="text-right">Signal</TableHead>
+                        <TableHead className="text-right">Price</TableHead>
+                        <TableHead className="text-right">Change</TableHead>
+                        <TableHead className="text-right">Change %</TableHead>
+                        <TableHead className="text-right">Volume</TableHead>
+                        <TableHead className="text-right">Day Range</TableHead>
                       </TableRow>
                     </TableHeader>
 
@@ -266,56 +226,22 @@ export default function Home() {
                           <TableCell className="font-medium">
                             {item.symbol}
                           </TableCell>
-                          <TableCell>{item.company}</TableCell>
-                          <TableCell>{item.industry}</TableCell>
+                          <TableCell>{item.companyName}</TableCell>
                           <TableCell className="text-right">
-                            {item.price ? item.price.toFixed(2) : "—"}
+                            {item.formattedPrice}
+                          </TableCell>
+                          <TableCell className={`text-right ${item.isPositive ? "text-green-600" : "text-red-600"}`}>
+                            {item.formattedChange}
+                          </TableCell>
+                          <TableCell className={`text-right ${item.isPositive ? "text-green-600" : "text-red-600"}`}>
+                            {item.isPositive ? <TrendingUp className="inline h-3 w-3 mr-1" /> : <TrendingDown className="inline h-3 w-3 mr-1" />}
+                            {item.changePercent}%
                           </TableCell>
                           <TableCell className="text-right">
-                            {item.RSI ? item.RSI.toFixed(2) : "—"}
+                            {item.formattedVolume}
                           </TableCell>
                           <TableCell className="text-right">
-                            {item.MACD !== null && item.MACD !== undefined ? (
-                              <span
-                                className={
-                                  item.MACD > 0
-                                    ? "text-green-600 font-medium"
-                                    : item.MACD < 0
-                                    ? "text-red-600 font-medium"
-                                    : "text-gray-500"
-                                }
-                              >
-                                {item.MACD.toFixed(2)}
-                              </span>
-                            ) : (
-                              "—"
-                            )}
-                          </TableCell>
-                          <TableCell className="text-right">
-                            {item.ema20 ? item.ema20.toFixed(2) : "—"}
-                          </TableCell>
-                          <TableCell className="text-right">
-                            {item.sma50 ? item.sma50.toFixed(2) : "—"}
-                          </TableCell>
-                          <TableCell className="text-right">
-                            <span
-                              className={`flex items-center justify-end gap-1 ${
-                                item.recommendation > 0
-                                  ? "text-green-600"
-                                  : item.recommendation < 0
-                                  ? "text-red-600"
-                                  : "text-gray-500"
-                              }`}
-                            >
-                              {item.recommendation > 0 ? (
-                                <TrendingUp className="h-3 w-3" />
-                              ) : item.recommendation < 0 ? (
-                                <TrendingDown className="h-3 w-3" />
-                              ) : null}
-                              {item.recommendation
-                                ? item.recommendation.toFixed(2)
-                                : "—"}
-                            </span>
+                            {item.formattedDayRange}
                           </TableCell>
                         </TableRow>
                       ))}
@@ -323,39 +249,6 @@ export default function Home() {
                   </Table>
                 </div>
               )}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Sector Allocation</CardTitle>
-              <CardDescription>
-                Portfolio diversification across sectors
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[400px] sm:h-[450px] md:h-[500px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={sectorData}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      label={({ name, value }) => `${name}: ${value}%`}
-                      outerRadius="60%"
-                      fill="#8884d8"
-                      dataKey="value"
-                    >
-                      {sectorData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                    <Legend wrapperStyle={{ fontSize: "12px" }} iconSize={10} />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
             </CardContent>
           </Card>
 
@@ -382,14 +275,17 @@ export default function Home() {
                       textAnchor="end"
                       height={60}
                     />
-                    <YAxis tick={{ fontSize: 12 }} />
+                    <YAxis
+                      tick={{ fontSize: 12 }}
+                      tickFormatter={(value) => `${value}%`}
+                    />
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "rgba(255,255,255,0.95)",
                         border: "1px solid #e5e7eb",
                         borderRadius: "8px",
                       }}
-                      formatter={(value: number) => value.toFixed(2)}
+                      formatter={(value: number) => `${value.toFixed(1)}%`}
                     />
                     <Legend verticalAlign="top" height={36} iconType="line" />
 
@@ -474,6 +370,288 @@ export default function Home() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Sector Allocation */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Sector Allocation</CardTitle>
+              <CardDescription>
+                Distribution of holdings by sector
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {loading ? (
+                <div className="flex h-[400px] w-full items-center justify-center">
+                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                </div>
+              ) : (
+                <div className="h-[400px] w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={sectorData}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        outerRadius={150}
+                        fill="#8884d8"
+                        dataKey="value"
+                        label={({ name, percent }) =>
+                          `${name} ${(percent * 100).toFixed(0)}%`
+                        }
+                      >
+                        {sectorData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Monthly Commentary Section */}
+        <div className="border-t bg-muted/50 py-12">
+          <div className="container px-4 mx-auto">
+            <div className="flex items-center gap-3 mb-8">
+              <FileText className="h-8 w-8 text-primary" />
+              <div>
+                <h2 className="text-3xl font-bold">Monthly Commentary</h2>
+                <p className="text-muted-foreground text-lg">
+                  Detailed market analysis and fund performance review
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              {/* Existing Market Commentary */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">
+                    October 2025 Market Analysis
+                  </CardTitle>
+                  <CardDescription>
+                    Monthly performance review and market insights
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="prose prose-slate dark:prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed">
+                      Indian equities staged a strong rebound in October 2025,
+                      with the Nifty 50 and Sensex rising about 4.5%, marking
+                      their best monthly gain since March...
+                    </p>
+                  </div>
+
+                  {/* Key Market Movements card */}
+                  <Card className="bg-muted/50 border-2">
+                    <CardHeader>
+                      <CardTitle className="text-lg">
+                        Key Market Movements
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        {keyMetrics.map((item) => (
+                          <div
+                            key={item.item}
+                            className="flex items-start justify-between gap-3 p-3 rounded-lg bg-background"
+                          >
+                            <div className="flex-1">
+                              <p className="text-sm font-medium">{item.item}</p>
+                              <p className="text-lg font-bold mt-1">
+                                {item.value}
+                              </p>
+                            </div>
+                            {item.negative ? (
+                              <TrendingDown className="h-5 w-5 text-red-600 flex-shrink-0" />
+                            ) : (
+                              <TrendingUp className="h-5 w-5 text-green-600 flex-shrink-0" />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CardContent>
+              </Card>
+
+              {/* Investment Objective */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Investment Objective</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">
+                    To provide our investors with an opportunity of long-term
+                    capital appreciation by investing in a diversified portfolio
+                    comprising of Large and Mid-Cap Securities.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Portfolio Statistics + Key Facts – Side by Side */}
+              <div className="grid gap-8 md:grid-cols-2">
+                {/* Portfolio Statistics – Left */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Portfolio Statistics</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Table>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Number of Holdings
+                          </TableCell>
+                          <TableCell className="text-right">36</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Portfolio Beta
+                          </TableCell>
+                          <TableCell className="text-right">0.91</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Portfolio Std Dev (Annualised)
+                          </TableCell>
+                          <TableCell className="text-right">16.10%</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Dividend Yield (TTM)
+                          </TableCell>
+                          <TableCell className="text-right">0.89%</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Portfolio P/E
+                          </TableCell>
+                          <TableCell className="text-right">36.45</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Portfolio P/B
+                          </TableCell>
+                          <TableCell className="text-right">7.32</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Top 5 Holdings
+                          </TableCell>
+                          <TableCell className="text-right">32.32%</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Benchmark Index
+                          </TableCell>
+                          <TableCell className="text-right">Nifty 50</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </CardContent>
+                </Card>
+
+                {/* Key Facts – Right */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Key Facts</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Table>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            Launch Date
+                          </TableCell>
+                          <TableCell className="text-right">
+                            26 August 2019
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            First Purchase Date
+                          </TableCell>
+                          <TableCell className="text-right">
+                            1 October 2019
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">Domicile</TableCell>
+                          <TableCell className="text-right">India</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            NAV Publication
+                          </TableCell>
+                          <TableCell className="text-right">Monthly</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">
+                            NAV Estimation
+                          </TableCell>
+                          <TableCell className="text-right">Weekly</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Capital Structure and Fees */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Capital Structure and Fees</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <p className="font-medium">Annual Management Fee</p>
+                    <p className="text-muted-foreground">
+                      There is no annual management fee payable.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-medium">Performance Fee</p>
+                    <p className="text-muted-foreground">
+                      There is no performance fee payable.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Full Disclaimer */}
+              <Card className="border-amber-500/50 bg-amber-50/10">
+                <CardHeader>
+                  <div className="flex items-center gap-2">
+                    <AlertCircle className="h-5 w-5 text-amber-600" />
+                    <CardTitle>Disclaimer</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Members of The Finance Club may/may not hold a stake in the
+                    companies mentioned.
+                    <br />
+                    <br />
+                    We may / may not have traded in the mentioned companies in
+                    the last 3 months.
+                    <br />
+                    <br />
+                    We are not SEBI registered research analyst.
+                    <br />
+                    <br />
+                    Buy / Sell securities after thorough analysis and at your
+                    own risk.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </main>
 

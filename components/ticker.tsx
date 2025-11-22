@@ -13,8 +13,16 @@ const tickerData = [
   { symbol: "ITC", price: "₹475.20", change: "+0.6%", positive: true },
 ]
 
-export function Ticker() {
-  const doubledData = [...tickerData, ...tickerData]
+interface TickerProps {
+  data?: any[];
+}
+
+export function Ticker({ data = [] }: TickerProps) {
+  // Use provided data or fallback to empty array
+  // If data is empty, we might want to show a loading state or nothing
+  // But for now, let's just ensure we have data to map
+  const displayData = data.length > 0 ? data : tickerData;
+  const doubledData = [...displayData, ...displayData];
 
   return (
     <div className="w-full overflow-hidden border-b bg-muted/50 py-3">
@@ -25,18 +33,25 @@ export function Ticker() {
             className="flex items-center gap-2 px-6 text-sm font-medium"
           >
             <span className="font-bold text-foreground">{item.symbol}</span>
-            <span className="text-muted-foreground">{item.price}</span>
+            <span className="text-muted-foreground">{item.formattedPrice || item.price}</span>
             <span
-              className={`flex items-center gap-1 ${
-                item.positive ? "text-green-600" : "text-red-600"
-              }`}
+              className={`flex items-center gap-1 ${item.isPositive !== undefined
+                ? (item.isPositive ? "text-green-600" : "text-red-600")
+                : (item.positive ? "text-green-600" : "text-red-600")
+                }`}
             >
-              {item.positive ? (
-                <TrendingUp className="h-3 w-3" />
+              {item.isPositive !== undefined ? (
+                item.isPositive ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />
               ) : (
-                <TrendingDown className="h-3 w-3" />
+                item.positive ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />
               )}
-              {item.change}
+              {item.formattedChangeWithPercent ? (
+                // Extract just the percentage for the ticker if needed, or show the whole string
+                // The design usually shows just percentage or change. Let's show percentage if available
+                // The API returns formattedChangeWithPercent like "₹-0.03 (-0.13%)"
+                // Let's try to use changePercent if available
+                item.changePercent !== undefined ? `${item.changePercent > 0 ? '+' : ''}${item.changePercent}%` : item.change
+              ) : item.change}
             </span>
           </div>
         ))}
