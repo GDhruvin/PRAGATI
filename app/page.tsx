@@ -154,45 +154,6 @@ export default function Home() {
         <Ticker data={portfolioData} />
 
         <div className="w-full space-y-8 py-8 px-6">
-          <div className="grid gap-6 md:grid-cols-3">
-            <Card className="md:col-span-2">
-              <CardHeader>
-                <CardTitle className="text-3xl">₹21.18</CardTitle>
-                <CardDescription className="flex items-center gap-2 text-base">
-                  <span className="flex items-center gap-1 text-red-600">
-                    <TrendingDown className="h-4 w-4" />
-                    ₹-0.03 (-0.13%)
-                  </span>
-                  from previous day
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Last Updated: 14th Oct 2025, 3:30 PM IST
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Market Status</CardTitle>
-                <CardDescription>Current Session</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Status</span>
-                    <span className="font-medium text-green-600">Open</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Day Range</span>
-                    <span className="font-medium">₹21.05 - ₹21.32</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
           <Card>
             <CardHeader>
               <CardTitle>Live Portfolio Holdings</CardTitle>
