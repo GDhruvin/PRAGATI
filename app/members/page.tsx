@@ -1,163 +1,198 @@
 "use client";
 
+import { useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Phone, MapPin, User } from "lucide-react";
+import { Linkedin, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const clubMembers = [
-  // ... your full 15 members array remains exactly the same ...
+  // Batch of 2024-2026
   {
-    name: "Aarav Sharma",
-    role: "Portfolio Manager",
-    batch: "Batch 2021",
-    location: "Mumbai",
-    email: "aarav@financeclub.in",
-    phone: "+91 98765 43210",
-    avatar: "https://i.pravatar.cc/150?img=1",
-    initials: "AS",
+    name: "Kamalesh Maharana",
+    role: "Secretary",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/kamalesh-maharana-profile/",
+    avatar: "/Batch of 2024 - 2026/Kamalesh Maharana.jpg",
+    initials: "KM",
   },
   {
-    name: "Priya Mehta",
-    role: "Head of Research",
-    batch: "Batch 2020",
-    location: "Delhi",
-    email: "priya@financeclub.in",
-    phone: "+91 87654 32109",
-    avatar: "https://i.pravatar.cc/150?img=5",
-    initials: "PM",
-  },
-  {
-    name: "Rohan Kapoor",
-    role: "Equity Analyst",
-    batch: "Batch 2022",
-    location: "Bangalore",
-    email: "rohan@financeclub.in",
-    phone: "+91 76543 21098",
-    avatar: "https://i.pravatar.cc/150?img=12",
-    initials: "RK",
-  },
-  {
-    name: "Ananya Singh",
-    role: "Risk Manager",
-    batch: "Batch 2021",
-    location: "Pune",
-    email: "ananya@financeclub.in",
-    phone: "+91 65432 10987",
-    avatar: "https://i.pravatar.cc/150?img=8",
-    initials: "AS",
-  },
-  {
-    name: "Vikram Desai",
-    role: "Quantitative Analyst",
-    batch: "Batch 2023",
-    location: "Hyderabad",
-    email: "vikram@financeclub.in",
-    phone: "+91 54321 09876",
-    avatar: "https://i.pravatar.cc/150?img=15",
-    initials: "VD",
-  },
-  {
-    name: "Isha Patel",
-    role: "Macro Strategist",
-    batch: "Batch 2022",
-    location: "Chennai",
-    email: "isha@financeclub.in",
-    phone: "+91 43210 98765",
-    avatar: "https://i.pravatar.cc/150?img=3",
-    initials: "IP",
-  },
-  {
-    name: "Arjun Verma",
-    role: "Fixed Income Specialist",
-    batch: "Batch 2021",
-    location: "Mumbai",
-    email: "arjun@financeclub.in",
-    phone: "+91 91234 56789",
-    avatar: "https://i.pravatar.cc/150?img=16",
-    initials: "AV",
-  },
-  {
-    name: "Neha Gupta",
-    role: "Derivatives Trader",
-    batch: "Batch 2023",
-    location: "Delhi",
-    email: "neha@financeclub.in",
-    phone: "+91 82345 67890",
-    avatar: "https://i.pravatar.cc/150?img=32",
-    initials: "NG",
-  },
-  {
-    name: "Siddharth Jain",
-    role: "ESG Analyst",
-    batch: "Batch 2022",
-    location: "Ahmedabad",
-    email: "siddharth@financeclub.in",
-    phone: "+91 73456 78901",
-    avatar: "https://i.pravatar.cc/150?img=28",
-    initials: "SJ",
-  },
-  {
-    name: "Kavya Reddy",
-    role: "Behavioral Finance Lead",
-    batch: "Batch 2021",
-    location: "Hyderabad",
-    email: "kavya@financeclub.in",
-    phone: "+91 64567 89012",
-    avatar: "https://i.pravatar.cc/150?img=47",
-    initials: "KR",
-  },
-  {
-    name: "Yash Malhotra",
-    role: "Tech & Fintech Analyst",
-    batch: "Batch 2024",
-    location: "Bangalore",
-    email: "yash@financeclub.in",
-    phone: "+91 55678 90123",
-    avatar: "https://i.pravatar.cc/150?img=19",
-    initials: "YM",
-  },
-  {
-    name: "Tanya Khanna",
-    role: "Compliance & Legal",
-    batch: "Batch 2020",
-    location: "Mumbai",
-    email: "tanya@financeclub.in",
-    phone: "+91 46789 01234",
-    avatar: "https://i.pravatar.cc/150?img=38",
-    initials: "TK",
-  },
-  {
-    name: "Aditya Nair",
-    role: "Data Scientist",
-    batch: "Batch 2023",
-    location: "Kochi",
-    email: "aditya@financeclub.in",
-    phone: "+91 37890 12345",
-    avatar: "https://i.pravatar.cc/150?img=25",
+    name: "Aniket Nalgune",
+    role: "Fund Manager",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/aniketsnalgune/",
+    avatar: "/Batch of 2024 - 2026/Aniket Nalgune.jpg",
     initials: "AN",
   },
   {
-    name: "Riya Thakur",
-    role: "Member Relations",
-    batch: "Batch 2024",
-    location: "Jaipur",
-    email: "riya@financeclub.in",
-    phone: "+91 28901 23456",
-    avatar: "https://i.pravatar.cc/150?img=52",
-    initials: "RT",
+    name: "Bhupesh Kawdia",
+    role: "Fund Manager",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/bhupeshkawdia/",
+    avatar: "/Batch of 2024 - 2026/Bhupesh Kawdia.jpg",
+    initials: "BK",
   },
   {
-    name: "Devansh Goel",
-    role: "Treasury & Operations",
-    batch: "Batch 2022",
-    location: "Noida",
-    email: "devansh@financeclub.in",
-    phone: "+91 19012 34567",
-    avatar: "https://i.pravatar.cc/150?img=11",
-    initials: "DG",
+    name: "Gaurav Mittal",
+    role: "Fund Manager",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/gaurav-mittal-383351227/",
+    avatar: "/Batch of 2024 - 2026/Gaurav Mittal.jpg",
+    initials: "GM",
+  },
+  {
+    name: "Gaurav Singhania",
+    role: "Fund Manager",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/gaurav-singhania-037009250/",
+    avatar: "/Batch of 2024 - 2026/Gaurav Singhania.jpg",
+    initials: "GS",
+  },
+  {
+    name: "Madhavi Shah",
+    role: "Fund Manager",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/madhavishah0425/",
+    avatar: "/Batch of 2024 - 2026/Madhavi Shah.jpg",
+    initials: "MS",
+  },
+  {
+    name: "Sonia Chauhan",
+    role: "Fund Manager",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/sonia-chauhan-33b288216/",
+    avatar: "/Batch of 2024 - 2026/Sonia  Chauhan.jpg",
+    initials: "SC",
+  },
+  {
+    name: "Nakul Godha",
+    role: "Fund Manager",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/nakul-godha/",
+    avatar: "/Batch of 2024 - 2026/Nakul Godha.jpg",
+    initials: "NG",
+  },
+  {
+    name: "Tushar Gupta",
+    role: "Fund Manager",
+    batch: "Batch of 2024-2026",
+    linkedin: "https://www.linkedin.com/in/tushargupta634/",
+    avatar: "/Batch of 2024 - 2026/Tushar Gupta.jpg",
+    initials: "TG",
+  },
+  // Batch of 2025-2027
+  {
+    name: "Abhinav Jindal",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/abhinav-jindal-6a1ab622a/",
+    avatar: "/Batch of 2025-2027/Abhinav Jindal.jpg",
+    initials: "AJ",
+  },
+  {
+    name: "Abhishek Kumar",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/abhishek-kumar-64a672303/",
+    avatar: "/Batch of 2025-2027/Abhishek Kumar.jpg",
+    initials: "AK",
+  },
+  {
+    name: "Aditya Saraf",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/aditya-saraf-as2709/",
+    avatar: "/Batch of 2025-2027/Aditya Saraf.jpg",
+    initials: "AS",
+  },
+  {
+    name: "Bhavya Bihani",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/bhavya-bihani-82a2a1249/",
+    avatar: "/Batch of 2025-2027/Bhavya Bihani.jpg",
+    initials: "BB",
+  },
+  {
+    name: "Manasi Banka",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/manasi-banka-b943a2365/",
+    avatar: "/Batch of 2025-2027/Manasi Banka.jpg",
+    initials: "MB",
+  },
+  {
+    name: "Nischay Goenka",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/nischay-goenka-b606051b0/",
+    avatar: "/Batch of 2025-2027/Nischay Goenka.jpg",
+    initials: "NG",
+  },
+  {
+    name: "Nishant Bajaj",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/nishant-bajaj-1903bb244/",
+    avatar: "/Batch of 2025-2027/Nishant Bajaj.jpg",
+    initials: "NB",
+  },
+  {
+    name: "Rishabh Wadhwa",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/rishabh-wadhwa-0a5670205/",
+    avatar: "",
+    initials: "RW",
+  },
+  {
+    name: "Rupanshi Goel",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/rupanshi-goel-7116b825a/",
+    avatar: "/Batch of 2025-2027/Rupanshi Goel.jpg",
+    initials: "RG",
+  },
+  {
+    name: "Saksham Gupta",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/sakshamgupta0/",
+    avatar: "/Batch of 2025-2027/Saksham Gupta.jpg",
+    initials: "SG",
+  },
+  {
+    name: "Shalin Patel",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/shalin-patel-aa6178264/",
+    avatar: "/Batch of 2025-2027/Shalin Patel.jpg",
+    initials: "SP",
+  },
+  {
+    name: "Sharad Sharma",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/sharadsh/",
+    avatar: "/Batch of 2025-2027/Sharad Sharma.jpg",
+    initials: "SS",
+  },
+  {
+    name: "Vanshita Sehgal",
+    role: "Fund Manager",
+    batch: "Batch of 2025-2027",
+    linkedin: "https://www.linkedin.com/in/vanshita-sehgal-b32450205/",
+    avatar: "/Batch of 2025-2027/Vanshita Sehgal.jpg",
+    initials: "VS",
   },
 ];
 
@@ -195,50 +230,69 @@ function MemberCard({ member }: { member: (typeof clubMembers)[0] }) {
       </CardHeader>
 
       <CardContent className="space-y-5 pb-8 text-sm">
-        <div className="flex items-center gap-3 text-muted-foreground group-hover:text-foreground transition-colors">
-          <MapPin className="h-4 w-4 flex-shrink-0" />
-          <span>{member.location}</span>
-        </div>
-
-        <div className="flex items-center gap-3 text-muted-foreground group-hover:text-foreground transition-colors">
-          <Mail className="h-4 w-4 flex-shrink-0" />
+        {member.linkedin && (
           <a
-            href={`mailto:${member.email}`}
-            className="hover:text-primary transition-colors truncate block"
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 group/link"
           >
-            {member.email}
+            <Linkedin className="h-5 w-5 group-hover/link:scale-110 transition-transform" />
+            <span className="font-medium">View LinkedIn Profile</span>
           </a>
-        </div>
-
-        <div className="flex items-center gap-3 text-muted-foreground group-hover:text-foreground transition-colors">
-          <Phone className="h-4 w-4 flex-shrink-0" />
-          <span>{member.phone}</span>
-        </div>
+        )}
       </CardContent>
     </Card>
   );
 }
 
 export default function ClubMembersPage() {
+  const [selectedBatch, setSelectedBatch] = useState<string>("all");
+
+  // Get unique batches
+  const batches = Array.from(new Set(clubMembers.map(m => m.batch))).sort();
+
+  // Filter members by batch
+  const filteredMembers = selectedBatch === "all"
+    ? clubMembers
+    : clubMembers.filter(m => m.batch === selectedBatch);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <div className="border-b bg-muted/50 py-16">
-          <div className="px-4 text-center">
+        <div className="border-b bg-muted/50 py-6">
+          <div className="px-2 text-center">
             <div className="flex flex-col items-center gap-5">
-              <div className="flex items-center gap-4 mb-4 justify-center">
+              <div className="flex items-center gap-4 justify-center">
                 <User className="h-12 w-12 text-primary" />
                 <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                  Our Club Members
+                  Fund Managers
                 </h1>
               </div>
               <p className="text-xl text-muted-foreground max-w-3xl">
-                Meet the passionate finance enthusiasts driving PRAGATI Fund’s
+                Meet the passionate finance enthusiasts driving PRAGATI Fund's
                 research, analysis, and investment decisions.
               </p>
+
+              {/* Batch Filter */}
+              <div className="mt-2 w-full max-w-xs">
+                <Select value={selectedBatch} onValueChange={setSelectedBatch}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Filter by Batch" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Batches</SelectItem>
+                    {batches.map((batch) => (
+                      <SelectItem key={batch} value={batch}>
+                        {batch}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
         </div>
@@ -246,18 +300,9 @@ export default function ClubMembersPage() {
         {/* Members Grid */}
         <div className="py-16 px-4">
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {clubMembers.map((member) => (
+            {filteredMembers.map((member) => (
               <MemberCard key={member.name} member={member} />
             ))}
-          </div>
-
-          <div className="mt-16 text-center">
-            <p className="text-lg text-muted-foreground">
-              Total Active Members:{" "}
-              <strong className="text-2xl font-bold text-primary">
-                {clubMembers.length}
-              </strong>
-            </p>
           </div>
         </div>
       </main>

@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Ticker } from "@/components/ticker";
 import { FactSheetHeader } from "@/components/fact-sheet-header";
+import { MarketData } from "@/components/market-data";
 import {
   Card,
   CardContent,
@@ -127,15 +128,15 @@ export default function Home() {
     const total = Object.values(industryCounts).reduce((a, b) => a + b, 0);
 
     const COLORS = [
-      "#3b82f6",
-      "#8b5cf6",
-      "#10b981",
-      "#f59e0b",
-      "#ef4444",
-      "#06b6d4",
-      "#6366f1",
-      "#84cc16",
-      "#ec4899",
+      "#2563eb", // Blue
+      "#7c3aed", // Purple
+      "#059669", // Green
+      "#dc2626", // Red
+      "#ea580c", // Orange
+      "#0891b2", // Cyan
+      "#4f46e5", // Indigo
+      "#65a30d", // Lime
+      "#db2777", // Pink
     ];
 
     return Object.entries(industryCounts).map(([name, count], index) => ({
@@ -154,6 +155,8 @@ export default function Home() {
         <Ticker data={portfolioData} />
 
         <div className="w-full space-y-8 py-8 px-6">
+          <MarketData />
+
           <Card>
             <CardHeader>
               <CardTitle>Live Portfolio Holdings</CardTitle>

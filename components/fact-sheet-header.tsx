@@ -30,12 +30,12 @@ export function FactSheetHeader() {
                             <h1 className="text-6xl md:text-7xl font-black tracking-tighter leading-none">
                                 P<span className="inline-flex items-center justify-center">₹</span>AGATI
                             </h1>
-                            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mt-1">
-                                Monthly Fact-Sheet
-                            </h2>
-                            <p className="text-lg font-bold mt-1 uppercase tracking-wide">
-                                October, 2025
+                            <p className="text-lg md:text-xl font-semibold tracking-wide mt-1">
+                                IIM Kashipur
                             </p>
+                            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mt-1">
+                                Student Managed Investment Fund
+                            </h2>
                         </div>
 
                         {/* NAV Section */}

@@ -10,9 +10,11 @@ import { cn } from "@/lib/utils";
 
 const routes = [
   { name: "Home", href: "/" },
+  { name: "About Us", href: "/about" },
   { name: "News", href: "/news" },
-  { name: "Members", href: "/members" },
-  // { name: "Monthly Commentary", href: "/commentary" },
+  { name: "Fund Managers", href: "/members" },
+  { name: "Contact Us", href: "/contact" },
+  // { name: "Our Story", href: "/story" },
 ];
 
 export function Navbar() {
