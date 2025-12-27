@@ -60,7 +60,7 @@ export function Navbar() {
               className="object-contain"
             />
           </div>
-          <span className="text-lg font-bold leading-none">PRAGATI</span>
+          <span className="text-lg font-bold leading-none">P₹AGATI</span>
         </Link>
 
         <div className="flex items-center gap-4">

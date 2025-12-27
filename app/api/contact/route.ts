@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
         const mailOptions = {
             from: emailUser,
             to: emailTo,
-            subject: "New Contact Form Submission - PRAGATI Fund",
+            subject: "New Contact Form Submission - P₹AGATI Fund",
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
@@ -93,7 +93,7 @@ ${fundSuggestion}
           ` : ''}
 
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 12px;">
-            <p>This email was sent from the PRAGATI Fund contact form.</p>
+            <p>This email was sent from the P₹AGATI Fund contact form.</p>
             <p>Submitted on: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
           </div>
         </div>

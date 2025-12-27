@@ -218,7 +218,6 @@ function MemberCard({ member }: { member: (typeof clubMembers)[0] }) {
             <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
               {member.name}
             </h3>
-            <p className="text-base font-medium text-primary">{member.role}</p>
           </div>
 
           <Badge
@@ -252,11 +251,11 @@ export default function ClubMembersPage() {
   const [showModal, setShowModal] = useState(true);
 
   // Get unique batches
-  const batches = Array.from(new Set(clubMembers.map(m => m.batch))).sort();
+  const batches = Array.from(new Set(clubMembers.map((m) => m.batch))).sort();
 
   // Filter members by batch
   const filteredMembers = selectedBatch
-    ? clubMembers.filter(m => m.batch === selectedBatch)
+    ? clubMembers.filter((m) => m.batch === selectedBatch)
     : [];
 
   const handleBatchSelect = (batch: string) => {
@@ -293,7 +292,8 @@ export default function ClubMembersPage() {
                   <div>
                     <div className="font-semibold text-lg">{batch}</div>
                     <div className="text-sm opacity-80">
-                      {clubMembers.filter(m => m.batch === batch).length} members
+                      {clubMembers.filter((m) => m.batch === batch).length}{" "}
+                      members
                     </div>
                   </div>
                 </Button>

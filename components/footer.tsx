@@ -101,7 +101,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t">
           <p className="text-center text-sm text-muted-foreground">
-            © 2025 PRAGATI Fund Dashboard | IIM Kashipur Finance Club | All Rights Reserved
+            © 2025 P₹AGATI Fund Dashboard | IIM Kashipur Finance Club | All Rights Reserved
           </p>
         </div>
       </div>

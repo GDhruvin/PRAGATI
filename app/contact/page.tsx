@@ -138,7 +138,7 @@ export default function ContactPage() {
                                 Get in Touch
                             </h1>
                             <p className="text-xl text-muted-foreground">
-                                Have questions about PRAGATI Fund? We'd love to hear from you.
+                                Have questions about P₹AGATI Fund? We'd love to hear from you.
                                 Send us a message and we'll respond as soon as possible.
                             </p>
                         </div>

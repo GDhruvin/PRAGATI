@@ -51,50 +51,50 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   const navPerformanceData = [
-    { date: "Oct-2019", PRAGATI: 0.0, Nifty50: 0.0 },
-    { date: "Dec-2019", PRAGATI: 8.0, Nifty50: 5.0 },
-    { date: "Feb-2020", PRAGATI: -1.0, Nifty50: -5.0 },
-    { date: "Mar-2020", PRAGATI: -2.0, Nifty50: -28.0 },
-    { date: "Apr-2020", PRAGATI: 0.0, Nifty50: -15.0 },
-    { date: "Jun-2020", PRAGATI: 5.0, Nifty50: 5.0 },
-    { date: "Aug-2020", PRAGATI: 8.0, Nifty50: 10.0 },
-    { date: "Oct-2020", PRAGATI: 10.0, Nifty50: 15.0 },
-    { date: "Dec-2020", PRAGATI: 18.0, Nifty50: 25.0 },
-    { date: "Feb-2021", PRAGATI: 22.0, Nifty50: 28.0 },
-    { date: "Apr-2021", PRAGATI: 23.0, Nifty50: 29.0 },
-    { date: "Jun-2021", PRAGATI: 30.0, Nifty50: 35.0 },
-    { date: "Aug-2021", PRAGATI: 32.0, Nifty50: 38.0 },
-    { date: "Oct-2021", PRAGATI: 42.0, Nifty50: 52.0 },
-    { date: "Dec-2021", PRAGATI: 40.0, Nifty50: 50.0 },
-    { date: "Feb-2022", PRAGATI: 38.0, Nifty50: 48.0 },
-    { date: "Apr-2022", PRAGATI: 38.0, Nifty50: 48.0 },
-    { date: "Jun-2022", PRAGATI: 30.0, Nifty50: 40.0 },
-    { date: "Aug-2022", PRAGATI: 35.0, Nifty50: 50.0 },
-    { date: "Oct-2022", PRAGATI: 38.0, Nifty50: 55.0 },
-    { date: "Dec-2022", PRAGATI: 36.0, Nifty50: 52.0 },
-    { date: "Feb-2023", PRAGATI: 35.0, Nifty50: 52.0 },
-    { date: "Apr-2023", PRAGATI: 45.0, Nifty50: 60.0 },
-    { date: "Jun-2023", PRAGATI: 52.0, Nifty50: 65.0 },
-    { date: "Aug-2023", PRAGATI: 55.0, Nifty50: 68.0 },
-    { date: "Oct-2023", PRAGATI: 55.0, Nifty50: 65.0 },
-    { date: "Dec-2023", PRAGATI: 65.0, Nifty50: 80.0 },
-    { date: "Feb-2024", PRAGATI: 75.0, Nifty50: 90.0 },
-    { date: "Apr-2024", PRAGATI: 85.0, Nifty50: 95.0 },
-    { date: "Jun-2024", PRAGATI: 100.0, Nifty50: 110.0 },
-    { date: "Aug-2024", PRAGATI: 110.0, Nifty50: 120.0 },
-    { date: "Oct-2024", PRAGATI: 115.0, Nifty50: 125.0 },
-    { date: "Dec-2024", PRAGATI: 105.0, Nifty50: 115.0 },
-    { date: "Feb-2025", PRAGATI: 95.0, Nifty50: 105.0 },
-    { date: "Apr-2025", PRAGATI: 105.0, Nifty50: 115.0 },
-    { date: "Jun-2025", PRAGATI: 115.0, Nifty50: 120.0 },
-    { date: "Aug-2025", PRAGATI: 112.0, Nifty50: 115.0 },
-    { date: "Oct-2025", PRAGATI: 120.0, Nifty50: 125.0 },
+    { date: "Oct-2019", "P₹AGATI": 0.0, Nifty50: 0.0 },
+    { date: "Dec-2019", "P₹AGATI": 8.0, Nifty50: 5.0 },
+    { date: "Feb-2020", "P₹AGATI": -1.0, Nifty50: -5.0 },
+    { date: "Mar-2020", "P₹AGATI": -2.0, Nifty50: -28.0 },
+    { date: "Apr-2020", "P₹AGATI": 0.0, Nifty50: -15.0 },
+    { date: "Jun-2020", "P₹AGATI": 5.0, Nifty50: 5.0 },
+    { date: "Aug-2020", "P₹AGATI": 8.0, Nifty50: 10.0 },
+    { date: "Oct-2020", "P₹AGATI": 10.0, Nifty50: 15.0 },
+    { date: "Dec-2020", "P₹AGATI": 18.0, Nifty50: 25.0 },
+    { date: "Feb-2021", "P₹AGATI": 22.0, Nifty50: 28.0 },
+    { date: "Apr-2021", "P₹AGATI": 23.0, Nifty50: 29.0 },
+    { date: "Jun-2021", "P₹AGATI": 30.0, Nifty50: 35.0 },
+    { date: "Aug-2021", "P₹AGATI": 32.0, Nifty50: 38.0 },
+    { date: "Oct-2021", "P₹AGATI": 42.0, Nifty50: 52.0 },
+    { date: "Dec-2021", "P₹AGATI": 40.0, Nifty50: 50.0 },
+    { date: "Feb-2022", "P₹AGATI": 38.0, Nifty50: 48.0 },
+    { date: "Apr-2022", "P₹AGATI": 38.0, Nifty50: 48.0 },
+    { date: "Jun-2022", "P₹AGATI": 30.0, Nifty50: 40.0 },
+    { date: "Aug-2022", "P₹AGATI": 35.0, Nifty50: 50.0 },
+    { date: "Oct-2022", "P₹AGATI": 38.0, Nifty50: 55.0 },
+    { date: "Dec-2022", "P₹AGATI": 36.0, Nifty50: 52.0 },
+    { date: "Feb-2023", "P₹AGATI": 35.0, Nifty50: 52.0 },
+    { date: "Apr-2023", "P₹AGATI": 45.0, Nifty50: 60.0 },
+    { date: "Jun-2023", "P₹AGATI": 52.0, Nifty50: 65.0 },
+    { date: "Aug-2023", "P₹AGATI": 55.0, Nifty50: 68.0 },
+    { date: "Oct-2023", "P₹AGATI": 55.0, Nifty50: 65.0 },
+    { date: "Dec-2023", "P₹AGATI": 65.0, Nifty50: 80.0 },
+    { date: "Feb-2024", "P₹AGATI": 75.0, Nifty50: 90.0 },
+    { date: "Apr-2024", "P₹AGATI": 85.0, Nifty50: 95.0 },
+    { date: "Jun-2024", "P₹AGATI": 100.0, Nifty50: 110.0 },
+    { date: "Aug-2024", "P₹AGATI": 110.0, Nifty50: 120.0 },
+    { date: "Oct-2024", "P₹AGATI": 115.0, Nifty50: 125.0 },
+    { date: "Dec-2024", "P₹AGATI": 105.0, Nifty50: 115.0 },
+    { date: "Feb-2025", "P₹AGATI": 95.0, Nifty50: 105.0 },
+    { date: "Apr-2025", "P₹AGATI": 105.0, Nifty50: 115.0 },
+    { date: "Jun-2025", "P₹AGATI": 115.0, Nifty50: 120.0 },
+    { date: "Aug-2025", "P₹AGATI": 112.0, Nifty50: 115.0 },
+    { date: "Oct-2025", "P₹AGATI": 120.0, Nifty50: 125.0 },
   ];
   const returnsComparisonData = [
-    { period: "Overall", PRAGATI: 120.97, Nifty50: 126.43 },
-    { period: "Last Year", PRAGATI: 6.13, Nifty50: 6.27 },
-    { period: "Last 3 Months", PRAGATI: 3.84, Nifty50: 3.85 },
-    { period: "Last Month", PRAGATI: 4.43, Nifty50: 4.51 },
+    { period: "Overall", "P₹AGATI": 120.97, Nifty50: 126.43 },
+    { period: "Last Year", "P₹AGATI": 6.13, Nifty50: 6.27 },
+    { period: "Last 3 Months", "P₹AGATI": 3.84, Nifty50: 3.85 },
+    { period: "Last Month", "P₹AGATI": 4.43, Nifty50: 4.51 },
   ];
 
   useEffect(() => {
@@ -221,7 +221,7 @@ export default function Home() {
             <CardHeader>
               <CardTitle>NAV Performance vs Benchmark</CardTitle>
               <CardDescription>
-                PRAGATI Fund vs Nifty 50 (Indexed to 100 at inception)
+                P₹AGATI Fund vs Nifty 50 (Indexed to 100 at inception)
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -253,14 +253,14 @@ export default function Home() {
                     />
                     <Legend verticalAlign="top" height={36} iconType="line" />
 
-                    {/* PRAGATI Fund – Green (Winner) */}
+                    {/* "P₹AGATI" Fund – Green (Winner) */}
                     <Line
                       type="monotone"
-                      dataKey="PRAGATI"
+                      dataKey="P₹AGATI"
                       stroke="#10b981"
                       strokeWidth={4}
                       activeDot={{ r: 8, stroke: "#10b981", strokeWidth: 3 }}
-                      name="PRAGATI Fund"
+                      name="P₹AGATI Fund"
                     />
 
                     {/* Nifty 50 – Red (Benchmark) */}
@@ -318,10 +318,10 @@ export default function Home() {
                     />
                     <Legend />
                     <Bar
-                      dataKey="PRAGATI"
+                      dataKey="P₹AGATI"
                       fill="#8b5cf6"
                       radius={[8, 8, 0, 0]}
-                      name="PRAGATI Fund"
+                      name="P₹AGATI Fund"
                     />
                     <Bar
                       dataKey="Nifty50"

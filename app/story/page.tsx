@@ -18,7 +18,7 @@ export default function StoryPage() {
                             Our Story
                         </h1>
                         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                            The journey of PRAGATI - from an idea to a thriving student-managed investment fund
+                            The journey of P₹AGATI - from an idea to a thriving student-managed investment fund
                         </p>
                     </div>
                 </div>

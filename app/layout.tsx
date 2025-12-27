@@ -6,8 +6,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'PRAGATI Fund Dashboard | IIM Kashipur',
-  description: 'PRAGATI Fund Dashboard for IIM Kashipur Finance Club',
+  title: 'P₹AGATI Fund Dashboard | IIM Kashipur',
+  description: 'P₹AGATI Fund Dashboard for IIM Kashipur Finance Club',
 };
 
 export default function RootLayout({
