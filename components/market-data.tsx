@@ -84,52 +84,56 @@ export function MarketData() {
         <CardContent>
           <div className="grid gap-6 lg:grid-cols-2">
             {/* Market Indices Section */}
-            <div className="space-y-3">
-              <div className="rounded-lg border">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Index</TableHead>
-                      <TableHead className="text-right">Price</TableHead>
-                      <TableHead className="text-right">Change</TableHead>
-                      <TableHead className="text-right">Change %</TableHead>
+            <div className="rounded-lg border overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="min-w-[100px]">Index</TableHead>
+                    <TableHead className="text-right min-w-[100px]">
+                      Price
+                    </TableHead>
+                    <TableHead className="text-right min-w-[80px]">
+                      Change
+                    </TableHead>
+                    <TableHead className="text-right min-w-[100px]">
+                      Change %
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {marketIndices.map((index) => (
+                    <TableRow key={index.name}>
+                      <TableCell className="font-medium whitespace-nowrap">
+                        {index.name}
+                      </TableCell>
+                      <TableCell className="text-right font-semibold whitespace-nowrap">
+                        {index.price}
+                      </TableCell>
+                      <TableCell
+                        className={`text-right font-medium whitespace-nowrap ${
+                          index.isPositive ? "text-green-600" : "text-red-600"
+                        }`}
+                      >
+                        {index.change}
+                      </TableCell>
+                      <TableCell
+                        className={`text-right font-medium whitespace-nowrap ${
+                          index.isPositive ? "text-green-600" : "text-red-600"
+                        }`}
+                      >
+                        <div className="flex items-center justify-end gap-1">
+                          {index.isPositive ? (
+                            <TrendingUp className="h-4 w-4" />
+                          ) : (
+                            <TrendingDown className="h-4 w-4" />
+                          )}
+                          {index.changePercent}%
+                        </div>
+                      </TableCell>
                     </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {marketIndices.map((index) => (
-                      <TableRow key={index.name}>
-                        <TableCell className="font-medium">
-                          {index.name}
-                        </TableCell>
-                        <TableCell className="text-right font-semibold">
-                          {index.price}
-                        </TableCell>
-                        <TableCell
-                          className={`text-right font-medium ${
-                            index.isPositive ? "text-green-600" : "text-red-600"
-                          }`}
-                        >
-                          {index.change}
-                        </TableCell>
-                        <TableCell
-                          className={`text-right font-medium ${
-                            index.isPositive ? "text-green-600" : "text-red-600"
-                          }`}
-                        >
-                          <div className="flex items-center justify-end gap-1">
-                            {index.isPositive ? (
-                              <TrendingUp className="h-4 w-4" />
-                            ) : (
-                              <TrendingDown className="h-4 w-4" />
-                            )}
-                            {index.changePercent}%
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
+                  ))}
+                </TableBody>
+              </Table>
             </div>
 
             {/* Market Indicators Section */}
@@ -148,17 +152,17 @@ export function MarketData() {
                           : "border-blue-200 bg-blue-50/50 dark:border-blue-900/30 dark:bg-blue-950/20"
                       }`}
                     >
-                      <CardContent className="flex items-center justify-between p-4">
-                        <div className="flex-1">
+                      <CardContent className="flex items-center justify-between p-4 gap-3">
+                        <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-muted-foreground">
                             {indicator.label}
                           </p>
-                          <p className="text-lg font-bold mt-1">
+                          <p className="text-base sm:text-lg font-bold mt-1 break-words">
                             {indicator.value}
                           </p>
                         </div>
                         <Icon
-                          className={`h-8 w-8 ${
+                          className={`h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0 ${
                             indicator.trend === "negative"
                               ? "text-red-600"
                               : indicator.trend === "positive"

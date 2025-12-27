@@ -3,10 +3,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const routes = [
   { name: "Home", href: "/" },
@@ -22,6 +30,7 @@ const routes = [
 export function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
+  const [open, setOpen] = useState(false);
 
   const handleScrollClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("/#")) {
@@ -30,9 +39,12 @@ export function Navbar() {
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
+        setOpen(false); // Close mobile menu after navigation
       } else if (pathname !== "/") {
         window.location.href = href;
       }
+    } else {
+      setOpen(false); // Close mobile menu on navigation
     }
   };
 
@@ -51,7 +63,8 @@ export function Navbar() {
           <span className="text-lg font-bold leading-none">PRAGATI</span>
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             {routes.map((route) => (
               <Link
@@ -70,6 +83,7 @@ export function Navbar() {
             ))}
           </div>
 
+          {/* Theme Toggle */}
           <Button
             variant="ghost"
             size="icon"
@@ -79,25 +93,38 @@ export function Navbar() {
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
-        </div>
-      </div>
 
-      <div className="md:hidden border-t">
-        <div className="flex items-center gap-4 overflow-x-auto px-4 py-2">
-          {routes.map((route) => (
-            <Link
-              key={route.href}
-              href={route.href}
-              className={cn(
-                "whitespace-nowrap text-sm font-medium transition-colors hover:text-primary",
-                pathname === route.href
-                  ? "text-primary"
-                  : "text-muted-foreground"
-              )}
-            >
-              {route.name}
-            </Link>
-          ))}
+          {/* Mobile Menu */}
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetHeader>
+                <SheetTitle className="text-left">Navigation</SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-4 mt-8">
+                {routes.map((route) => (
+                  <Link
+                    key={route.href}
+                    href={route.href}
+                    onClick={(e) => handleScrollClick(e, route.href)}
+                    className={cn(
+                      "text-lg font-medium transition-colors hover:text-primary py-2 px-4 rounded-md hover:bg-accent",
+                      pathname === route.href
+                        ? "text-primary bg-accent"
+                        : "text-muted-foreground"
+                    )}
+                  >
+                    {route.name}
+                  </Link>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>
