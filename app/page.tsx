@@ -157,7 +157,7 @@ export default function Home() {
         <div className="w-full space-y-8 py-8 px-6">
           <MarketData />
 
-          <Card>
+          <Card id="portfolio">
             <CardHeader>
               <CardTitle>Live Portfolio Holdings</CardTitle>
               <CardDescription>
@@ -217,7 +217,7 @@ export default function Home() {
           </Card>
 
           {/* NAV Performance vs Benchmark */}
-          <Card>
+          <Card id="fund-performance">
             <CardHeader>
               <CardTitle>NAV Performance vs Benchmark</CardTitle>
               <CardDescription>

@@ -58,7 +58,7 @@ const marketIndicators = [
     icon: TrendingDown,
   },
   {
-    label: "FII Inflow/Outflow",
+    label: "DII Inflow/Outflow",
     value: "Net Outflow",
     trend: "negative",
     icon: TrendingDown,

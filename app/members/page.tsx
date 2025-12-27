@@ -7,13 +7,14 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Linkedin, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const clubMembers = [
   // Batch of 2024-2026
@@ -247,21 +248,60 @@ function MemberCard({ member }: { member: (typeof clubMembers)[0] }) {
 }
 
 export default function ClubMembersPage() {
-  const [selectedBatch, setSelectedBatch] = useState<string>("all");
+  const [selectedBatch, setSelectedBatch] = useState<string>("");
+  const [showModal, setShowModal] = useState(true);
 
   // Get unique batches
   const batches = Array.from(new Set(clubMembers.map(m => m.batch))).sort();
 
   // Filter members by batch
-  const filteredMembers = selectedBatch === "all"
-    ? clubMembers
-    : clubMembers.filter(m => m.batch === selectedBatch);
+  const filteredMembers = selectedBatch
+    ? clubMembers.filter(m => m.batch === selectedBatch)
+    : [];
+
+  const handleBatchSelect = (batch: string) => {
+    setSelectedBatch(batch);
+    setShowModal(false);
+  };
+
+  const handleChangeBatch = () => {
+    setShowModal(true);
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
       <main className="flex-1 pt-16">
+        {/* Batch Selection Modal */}
+        <Dialog open={showModal} onOpenChange={setShowModal}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-2xl">Select Batch</DialogTitle>
+              <DialogDescription>
+                Choose a batch to view the fund managers
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-3 py-4">
+              {batches.map((batch) => (
+                <Button
+                  key={batch}
+                  onClick={() => handleBatchSelect(batch)}
+                  variant="outline"
+                  className="h-auto py-4 justify-start text-left hover:bg-primary hover:text-primary-foreground transition-colors"
+                >
+                  <div>
+                    <div className="font-semibold text-lg">{batch}</div>
+                    <div className="text-sm opacity-80">
+                      {clubMembers.filter(m => m.batch === batch).length} members
+                    </div>
+                  </div>
+                </Button>
+              ))}
+            </div>
+          </DialogContent>
+        </Dialog>
+
         {/* Hero Section */}
         <div className="border-b bg-muted/50 py-6">
           <div className="px-2 text-center">
@@ -277,34 +317,43 @@ export default function ClubMembersPage() {
                 research, analysis, and investment decisions.
               </p>
 
-              {/* Batch Filter */}
-              <div className="mt-2 w-full max-w-xs">
-                <Select value={selectedBatch} onValueChange={setSelectedBatch}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Filter by Batch" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Batches</SelectItem>
-                    {batches.map((batch) => (
-                      <SelectItem key={batch} value={batch}>
-                        {batch}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              {/* Selected Batch Display and Change Button */}
+              {selectedBatch && (
+                <div className="mt-2 flex items-center gap-4">
+                  <Badge variant="secondary" className="text-lg px-6 py-2">
+                    {selectedBatch}
+                  </Badge>
+                  <Button
+                    onClick={handleChangeBatch}
+                    variant="outline"
+                    size="sm"
+                  >
+                    Change Batch
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
         {/* Members Grid */}
-        <div className="py-16 px-4">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredMembers.map((member) => (
-              <MemberCard key={member.name} member={member} />
-            ))}
+        {selectedBatch && filteredMembers.length > 0 ? (
+          <div className="py-16 px-4">
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filteredMembers.map((member) => (
+                <MemberCard key={member.name} member={member} />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          !showModal && (
+            <div className="py-16 px-4 text-center">
+              <p className="text-muted-foreground text-lg">
+                Please select a batch to view fund managers
+              </p>
+            </div>
+          )
+        )}
       </main>
 
       <Footer />
