@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t bg-background">
+    <footer className="mt-auto border-t border-white/20 bg-white/30 backdrop-blur-md">
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* About Section */}

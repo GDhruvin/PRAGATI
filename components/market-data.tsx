@@ -110,16 +110,14 @@ export function MarketData() {
                         {index.price}
                       </TableCell>
                       <TableCell
-                        className={`text-right font-medium whitespace-nowrap ${
-                          index.isPositive ? "text-green-600" : "text-red-600"
-                        }`}
+                        className={`text-right font-medium whitespace-nowrap ${index.isPositive ? "text-green-600" : "text-red-600"
+                          }`}
                       >
                         {index.change}
                       </TableCell>
                       <TableCell
-                        className={`text-right font-medium whitespace-nowrap ${
-                          index.isPositive ? "text-green-600" : "text-red-600"
-                        }`}
+                        className={`text-right font-medium whitespace-nowrap ${index.isPositive ? "text-green-600" : "text-red-600"
+                          }`}
                       >
                         <div className="flex items-center justify-end gap-1">
                           {index.isPositive ? (
@@ -144,13 +142,12 @@ export function MarketData() {
                   return (
                     <Card
                       key={indicator.label}
-                      className={`${
-                        indicator.trend === "negative"
-                          ? "border-red-200 bg-red-50/50 dark:border-red-900/30 dark:bg-red-950/20"
+                      className={`${indicator.trend === "negative"
+                          ? "border-red-200 !bg-red-50 dark:border-red-900/30 dark:bg-red-950/20"
                           : indicator.trend === "positive"
-                          ? "border-green-200 bg-green-50/50 dark:border-green-900/30 dark:bg-green-950/20"
-                          : "border-blue-200 bg-blue-50/50 dark:border-blue-900/30 dark:bg-blue-950/20"
-                      }`}
+                            ? "border-green-200 !bg-green-50 dark:border-green-900/30 dark:bg-green-950/20"
+                            : "border-blue-200 !bg-blue-50 dark:border-blue-900/30 dark:bg-blue-950/20"
+                        }`}
                     >
                       <CardContent className="flex items-center justify-between p-4 gap-3">
                         <div className="flex-1 min-w-0">
@@ -162,13 +159,12 @@ export function MarketData() {
                           </p>
                         </div>
                         <Icon
-                          className={`h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0 ${
-                            indicator.trend === "negative"
+                          className={`h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0 ${indicator.trend === "negative"
                               ? "text-red-600"
                               : indicator.trend === "positive"
-                              ? "text-green-600"
-                              : "text-blue-600"
-                          }`}
+                                ? "text-green-600"
+                                : "text-blue-600"
+                            }`}
                         />
                       </CardContent>
                     </Card>

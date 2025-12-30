@@ -127,23 +127,32 @@ export default function Home() {
 
     const total = Object.values(industryCounts).reduce((a, b) => a + b, 0);
 
-    const COLORS = [
-      "#2563eb", // Blue
-      "#7c3aed", // Purple
-      "#059669", // Green
-      "#dc2626", // Red
-      "#ea580c", // Orange
-      "#0891b2", // Cyan
-      "#4f46e5", // Indigo
-      "#65a30d", // Lime
-      "#db2777", // Pink
-    ];
+    // Initial base color: #396893 (RGB: 57, 104, 147)
+    // We want to generate progressively lighter shades.
+    // Simple approach: Mix with white.
+    const baseColor = { r: 57, g: 104, b: 147 };
 
-    return Object.entries(industryCounts).map(([name, count], index) => ({
-      name,
-      value: Number(((count / total) * 100).toFixed(1)),
-      color: COLORS[index % COLORS.length],
-    }));
+    return Object.entries(industryCounts)
+      .sort(([, a], [, b]) => b - a) // Sort by value desc to have consistent gradient
+      .map(([name, count], index, array) => {
+        // Calculate lightness factor based on index
+        // 0 -> 0% mix (base color)
+        // last -> 80% mix (very light)
+        const step = index / (array.length - 1 || 1);
+        const mix = step * 0.8; // Max 80% white mix
+
+        const r = Math.round(baseColor.r + (255 - baseColor.r) * mix);
+        const g = Math.round(baseColor.g + (255 - baseColor.g) * mix);
+        const b = Math.round(baseColor.b + (255 - baseColor.b) * mix);
+
+        const color = `rgb(${r}, ${g}, ${b})`;
+
+        return {
+          name,
+          value: Number(((count / total) * 100).toFixed(1)),
+          color: color,
+        };
+      });
   })();
 
   return (
@@ -253,23 +262,23 @@ export default function Home() {
                     />
                     <Legend verticalAlign="top" height={36} iconType="line" />
 
-                    {/* "P₹AGATI" Fund – Green (Winner) */}
+                    {/* "P₹AGATI" Fund – #4070c3 (Winner/Main) */}
                     <Line
                       type="monotone"
                       dataKey="P₹AGATI"
-                      stroke="#10b981"
+                      stroke="#4070c3"
                       strokeWidth={4}
-                      activeDot={{ r: 8, stroke: "#10b981", strokeWidth: 3 }}
+                      activeDot={{ r: 8, stroke: "#4070c3", strokeWidth: 3 }}
                       name="P₹AGATI Fund"
                     />
 
-                    {/* Nifty 50 – Red (Benchmark) */}
+                    {/* Nifty 50 – #d8e1f0 (Benchmark) */}
                     <Line
                       type="monotone"
                       dataKey="Nifty50"
-                      stroke="#ef4444"
+                      stroke="#d8e1f0"
                       strokeWidth={3}
-                      activeDot={{ r: 7, stroke: "#ef4444", strokeWidth: 2 }}
+                      activeDot={{ r: 7, stroke: "#d8e1f0", strokeWidth: 2 }}
                       name="Nifty 50"
                     />
                   </LineChart>
@@ -319,13 +328,13 @@ export default function Home() {
                     <Legend />
                     <Bar
                       dataKey="P₹AGATI"
-                      fill="#8b5cf6"
+                      fill="#4070c3"
                       radius={[8, 8, 0, 0]}
                       name="P₹AGATI Fund"
                     />
                     <Bar
                       dataKey="Nifty50"
-                      fill="#93c5fd"
+                      fill="#d8e1f0"
                       radius={[8, 8, 0, 0]}
                       name="Nifty 50"
                     />
@@ -379,7 +388,7 @@ export default function Home() {
         </div>
 
         {/* Monthly Commentary Section */}
-        <div className="border-t bg-muted/50 py-12">
+        <div className="border-t border-white/20 py-12">
           <div className="container px-4 mx-auto">
             <div className="flex items-center gap-3 mb-8">
               <FileText className="h-8 w-8 text-primary" />
@@ -412,7 +421,7 @@ export default function Home() {
                   </div>
 
                   {/* Key Market Movements card */}
-                  <Card className="bg-muted/50 border-2">
+                  <Card className="border-2 border-white/20">
                     <CardHeader>
                       <CardTitle className="text-lg">
                         Key Market Movements
@@ -589,7 +598,7 @@ export default function Home() {
               </Card>
 
               {/* Full Disclaimer */}
-              <Card className="border-amber-500/50 bg-amber-50/10">
+              <Card className="border-amber-500/50 bg-amber-50/20">
                 <CardHeader>
                   <div className="flex items-center gap-2">
                     <AlertCircle className="h-5 w-5 text-amber-600" />
