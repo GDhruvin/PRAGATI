@@ -313,7 +313,7 @@ export default function ClubMembersPage() {
                 </h1>
               </div>
               <p className="text-xl text-muted-foreground max-w-3xl">
-                Meet the passionate finance enthusiasts driving PRAGATI Fund's
+                Meet the passionate finance enthusiasts driving P₹AGATI Fund's
                 research, analysis, and investment decisions.
               </p>
 

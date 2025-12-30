@@ -44,14 +44,14 @@ export default function StoryPage() {
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <p className="text-lg text-muted-foreground leading-relaxed">
-                                    PRAGATI was born from a vision to bridge the gap between theoretical finance
+                                    P₹AGATI was born from a vision to bridge the gap between theoretical finance
                                     education and real-world investment management. A group of passionate students
                                     at IIM Kashipur, under the Finance Club, came together with a bold idea:
                                     create a student-managed fund that would provide hands-on experience in
                                     portfolio management.
                                 </p>
                                 <p className="text-lg text-muted-foreground leading-relaxed">
-                                    The name "PRAGATI" (प्रगति) means "progress" in Hindi, reflecting our
+                                    The name "P₹AGATI" (प्रगति) means "progress" in Hindi, reflecting our
                                     commitment to continuous growth, learning, and advancement in the field of
                                     investment management.
                                 </p>
@@ -76,7 +76,7 @@ export default function StoryPage() {
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <p className="text-lg text-muted-foreground leading-relaxed">
-                                    On October 1st, 2019, PRAGATI made its first investment, marking the beginning
+                                    On October 1st, 2019, P₹AGATI made its first investment, marking the beginning
                                     of our journey in the Indian equity markets. The initial portfolio was carefully
                                     constructed with a focus on large-cap and mid-cap stocks across diverse sectors.
                                 </p>
@@ -135,7 +135,7 @@ export default function StoryPage() {
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <p className="text-lg text-muted-foreground leading-relaxed">
-                                    Over the years, PRAGATI has evolved from a small group of enthusiasts to a
+                                    Over the years, P₹AGATI has evolved from a small group of enthusiasts to a
                                     well-structured team of fund managers spanning multiple batches. Each new
                                     batch brings fresh perspectives while learning from the experiences of their
                                     predecessors.
@@ -155,7 +155,7 @@ export default function StoryPage() {
                             </CardHeader>
                             <CardContent>
                                 <p className="text-lg text-muted-foreground leading-relaxed text-center max-w-4xl mx-auto">
-                                    As we continue our journey, PRAGATI remains committed to its founding principles:
+                                    As we continue our journey, P₹AGATI remains committed to its founding principles:
                                     learning through practice, maintaining the highest standards of integrity, and
                                     creating value through disciplined investment management. We're not just managing
                                     a portfolio; we're building the next generation of investment professionals.

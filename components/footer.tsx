@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* About Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold">PRAGATI Fund</h3>
+            <h3 className="text-lg font-bold">P₹AGATI Fund</h3>
             <p className="text-sm text-muted-foreground">
               Student-managed investment fund at IIM Kashipur, dedicated to excellence in portfolio management.
             </p>
