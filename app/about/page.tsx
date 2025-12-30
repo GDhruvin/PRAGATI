@@ -22,7 +22,7 @@ export default function AboutPage() {
                             knowledge-sharing, events, and real-world investment experience.
                         </p>
                         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                            Home to <span className="font-semibold text-primary">PRAGATI</span> - IIM Kashipur's student-run investment fund since 2019
+                            Home to <span className="font-semibold text-primary">P₹AGATI</span> - IIM Kashipur's student-run investment fund since 2019
                         </p>
                     </div>
                 </div>
@@ -52,19 +52,19 @@ export default function AboutPage() {
                         </CardContent>
                     </Card>
 
-                    {/* About PRAGATI */}
+                    {/* About P₹AGATI */}
                     <div className="grid gap-8 md:grid-cols-2">
                         <Card className="border-2 hover:shadow-xl transition-shadow">
                             <CardHeader>
                                 <div className="flex items-center gap-3 mb-2">
                                     <Target className="h-8 w-8 text-primary" />
-                                    <CardTitle className="text-3xl">About PRAGATI</CardTitle>
+                                    <CardTitle className="text-3xl">About P₹AGATI</CardTitle>
                                 </div>
                             </CardHeader>
                             <CardContent>
                                 <p className="text-lg text-muted-foreground leading-relaxed">
-                                    In 2019, The Finance Club launched <span className="font-semibold text-primary">PRAGATI</span>,
-                                    IIM Kashipur's student-run investment fund. PRAGATI is operated by club members as a
+                                    In 2019, The Finance Club launched <span className="font-semibold text-primary">P₹AGATI</span>,
+                                    IIM Kashipur's student-run investment fund. P₹AGATI is operated by club members as a
                                     professional investment fund, with guidance from faculty in the finance area.
                                 </p>
                             </CardContent>
@@ -80,24 +80,24 @@ export default function AboutPage() {
                             <CardContent>
                                 <p className="text-lg text-muted-foreground leading-relaxed">
                                     The fund's main objective is to provide students with real-life experience of managing
-                                    funds by applying academic theories to practice. PRAGATI serves as an educational tool
+                                    funds by applying academic theories to practice. P₹AGATI serves as an educational tool
                                     to enhance the financial knowledge of both fund managers and investors.
                                 </p>
                             </CardContent>
                         </Card>
                     </div>
 
-                    {/* How PRAGATI Works */}
+                    {/* How P₹AGATI Works */}
                     <Card className="border-2">
                         <CardHeader>
                             <div className="flex items-center gap-3 mb-2">
                                 <TrendingUp className="h-8 w-8 text-primary" />
-                                <CardTitle className="text-3xl">How PRAGATI Works</CardTitle>
+                                <CardTitle className="text-3xl">How P₹AGATI Works</CardTitle>
                             </div>
                         </CardHeader>
                         <CardContent className="space-y-6">
                             <p className="text-lg text-muted-foreground leading-relaxed">
-                                PRAGATI manages money entrusted by students and alumni of IIM Kashipur, allotting
+                                P₹AGATI manages money entrusted by students and alumni of IIM Kashipur, allotting
                                 them units of the fund. The Finance Club operates the fund professionally while
                                 maintaining its core educational mission.
                             </p>
@@ -136,7 +136,7 @@ export default function AboutPage() {
                         <CardContent className="space-y-4">
                             <p className="text-lg text-muted-foreground leading-relaxed">
                                 The Finance Club will always follow its goal to enhance the financial knowledge of
-                                students and will continue to utilize PRAGATI as an educational tool to support and
+                                students and will continue to utilize P₹AGATI as an educational tool to support and
                                 enhance the knowledge of its investors.
                             </p>
                             <div className="grid gap-6 md:grid-cols-3">
@@ -172,7 +172,7 @@ export default function AboutPage() {
                         </CardHeader>
                         <CardContent>
                             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                                PRAGATI is entirely managed by Finance Club members - students from various batches
+                                P₹AGATI is entirely managed by Finance Club members - students from various batches
                                 at IIM Kashipur who work together under faculty guidance to operate the fund professionally
                                 while gaining invaluable real-world investment experience.
                             </p>
