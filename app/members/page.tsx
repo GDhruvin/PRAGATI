@@ -152,7 +152,7 @@ const clubMembers = [
     role: "Fund Manager",
     batch: "Batch of 2025-2027",
     linkedin: "https://www.linkedin.com/in/rishabh-wadhwa-0a5670205/",
-    avatar: "",
+    avatar: "/Batch of 2025-2027/Rishabh Wadhwa.jpeg",
     initials: "RW",
   },
   {

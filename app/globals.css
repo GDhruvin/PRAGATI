@@ -4,58 +4,86 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    /* Premium Financial Factsheet Dark Theme */
+    /* Main Background */
+    --background: 200 15% 7%; /* #0E1214 */
+    --foreground: 210 8% 91%; /* #E6E8EA - Primary Text */
+    
+    /* Card & Surface Backgrounds */
+    --card: 200 12% 10%; /* #151A1C - Secondary Background */
+    --card-foreground: 210 8% 91%; /* #E6E8EA */
+    --popover: 200 10% 13%; /* #1C2225 - Elevated Surface */
+    --popover-foreground: 210 8% 91%; /* #E6E8EA */
+    
+    /* Primary Colors - Green */
+    --primary: 160 59% 30%; /* #1F7A5C - Primary Green */
+    --primary-foreground: 210 8% 91%; /* #E6E8EA */
+    
+    /* Secondary Colors */
+    --secondary: 200 10% 13%; /* #1C2225 - Elevated Surface */
+    --secondary-foreground: 210 8% 91%; /* #E6E8EA */
+    
+    /* Muted Colors */
+    --muted: 200 12% 10%; /* #151A1C */
+    --muted-foreground: 210 8% 68%; /* #A6ADB4 - Secondary Text */
+    
+    /* Accent Colors - Gold */
+    --accent: 42 52% 54%; /* #C9A44C - Gold Accent */
+    --accent-foreground: 200 15% 7%; /* #0E1214 */
+    
+    /* Status Colors */
+    --destructive: 6 78% 57%; /* #E74C3C - Error/Negative */
+    --destructive-foreground: 210 8% 91%; /* #E6E8EA */
+    --success: 145 63% 49%; /* #2ECC71 - Success/Positive */
+    --success-foreground: 200 15% 7%; /* #0E1214 */
+    --warning: 48 89% 50%; /* #F1C40F - Warning/Neutral */
+    --warning-foreground: 200 15% 7%; /* #0E1214 */
+    
+    /* Borders & Inputs */
+    --border: 200 12% 19%; /* #2A3236 */
+    --input: 200 12% 19%; /* #2A3236 */
+    --ring: 160 59% 30%; /* #1F7A5C - Primary Green */
+    
     --radius: 0.5rem;
-    --chart-1: 221.2 83.2% 53.3%;
-    --chart-2: 212 95% 68%;
-    --chart-3: 216 92% 60%;
-    --chart-4: 210 98% 78%;
-    --chart-5: 212 97% 87%;
+    
+    /* Chart Colors - Financial Theme */
+    --chart-1: 42 52% 54%; /* #C9A44C - Gold for highlights */
+    --chart-2: 160 59% 30%; /* #1F7A5C - Green for growth */
+    --chart-3: 6 78% 57%; /* #E74C3C - Red for decline */
+    --chart-4: 42 60% 68%; /* #E3C77A - Soft Gold */
+    --chart-5: 160 64% 22%; /* #145A46 - Deep Emerald */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    /* Same as root - always dark theme */
+    --background: 200 15% 7%; /* #0E1214 */
+    --foreground: 210 8% 91%; /* #E6E8EA */
+    --card: 200 12% 10%; /* #151A1C */
+    --card-foreground: 210 8% 91%; /* #E6E8EA */
+    --popover: 200 10% 13%; /* #1C2225 */
+    --popover-foreground: 210 8% 91%; /* #E6E8EA */
+    --primary: 160 59% 30%; /* #1F7A5C */
+    --primary-foreground: 210 8% 91%; /* #E6E8EA */
+    --secondary: 200 10% 13%; /* #1C2225 */
+    --secondary-foreground: 210 8% 91%; /* #E6E8EA */
+    --muted: 200 12% 10%; /* #151A1C */
+    --muted-foreground: 210 8% 68%; /* #A6ADB4 */
+    --accent: 42 52% 54%; /* #C9A44C */
+    --accent-foreground: 200 15% 7%; /* #0E1214 */
+    --destructive: 6 78% 57%; /* #E74C3C */
+    --destructive-foreground: 210 8% 91%; /* #E6E8EA */
+    --success: 145 63% 49%; /* #2ECC71 */
+    --success-foreground: 200 15% 7%; /* #0E1214 */
+    --warning: 48 89% 50%; /* #F1C40F */
+    --warning-foreground: 200 15% 7%; /* #0E1214 */
+    --border: 200 12% 19%; /* #2A3236 */
+    --input: 200 12% 19%; /* #2A3236 */
+    --ring: 160 59% 30%; /* #1F7A5C */
+    --chart-1: 42 52% 54%; /* #C9A44C */
+    --chart-2: 160 59% 30%; /* #1F7A5C */
+    --chart-3: 6 78% 57%; /* #E74C3C */
+    --chart-4: 42 60% 68%; /* #E3C77A */
+    --chart-5: 160 64% 22%; /* #145A46 */
   }
 }
 

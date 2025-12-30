@@ -206,7 +206,7 @@ export default function ContactPage() {
                                 <CardContent>
                                     {submitted ? (
                                         <div className="flex flex-col items-center justify-center py-12 text-center">
-                                            <CheckCircle2 className="h-16 w-16 text-green-600 mb-4" />
+                                            <CheckCircle2 className="h-16 w-16 text-success mb-4" />
                                             <h3 className="text-2xl font-bold mb-2">
                                                 Thank You!
                                             </h3>
@@ -221,7 +221,7 @@ export default function ContactPage() {
                                             <div className="grid gap-4 sm:grid-cols-2">
                                                 <div className="space-y-2">
                                                     <Label htmlFor="firstName">
-                                                        First Name <span className="text-red-500">*</span>
+                                                        First Name <span className="text-destructive">*</span>
                                                     </Label>
                                                     <Input
                                                         id="firstName"
@@ -229,10 +229,10 @@ export default function ContactPage() {
                                                         value={formData.firstName}
                                                         onChange={handleChange}
                                                         placeholder="John"
-                                                        className={errors.firstName ? "border-red-500" : ""}
+                                                        className={errors.firstName ? "border-destructive" : ""}
                                                     />
                                                     {errors.firstName && (
-                                                        <p className="text-sm text-red-500">
+                                                        <p className="text-sm text-destructive">
                                                             {errors.firstName}
                                                         </p>
                                                     )}
@@ -240,7 +240,7 @@ export default function ContactPage() {
 
                                                 <div className="space-y-2">
                                                     <Label htmlFor="lastName">
-                                                        Last Name <span className="text-red-500">*</span>
+                                                        Last Name <span className="text-destructive">*</span>
                                                     </Label>
                                                     <Input
                                                         id="lastName"
@@ -248,10 +248,10 @@ export default function ContactPage() {
                                                         value={formData.lastName}
                                                         onChange={handleChange}
                                                         placeholder="Doe"
-                                                        className={errors.lastName ? "border-red-500" : ""}
+                                                        className={errors.lastName ? "border-destructive" : ""}
                                                     />
                                                     {errors.lastName && (
-                                                        <p className="text-sm text-red-500">
+                                                        <p className="text-sm text-destructive">
                                                             {errors.lastName}
                                                         </p>
                                                     )}
@@ -261,7 +261,7 @@ export default function ContactPage() {
                                             {/* Email Field */}
                                             <div className="space-y-2">
                                                 <Label htmlFor="email">
-                                                    Email Address <span className="text-red-500">*</span>
+                                                    Email Address <span className="text-destructive">*</span>
                                                 </Label>
                                                 <Input
                                                     id="email"
@@ -270,17 +270,17 @@ export default function ContactPage() {
                                                     value={formData.email}
                                                     onChange={handleChange}
                                                     placeholder="john.doe@example.com"
-                                                    className={errors.email ? "border-red-500" : ""}
+                                                    className={errors.email ? "border-destructive" : ""}
                                                 />
                                                 {errors.email && (
-                                                    <p className="text-sm text-red-500">{errors.email}</p>
+                                                    <p className="text-sm text-destructive">{errors.email}</p>
                                                 )}
                                             </div>
 
                                             {/* Phone Field */}
                                             <div className="space-y-2">
                                                 <Label htmlFor="phone">
-                                                    Phone Number <span className="text-red-500">*</span>
+                                                    Phone Number <span className="text-destructive">*</span>
                                                 </Label>
                                                 <Input
                                                     id="phone"
@@ -289,17 +289,17 @@ export default function ContactPage() {
                                                     value={formData.phone}
                                                     onChange={handleChange}
                                                     placeholder="9876543210"
-                                                    className={errors.phone ? "border-red-500" : ""}
+                                                    className={errors.phone ? "border-destructive" : ""}
                                                 />
                                                 {errors.phone && (
-                                                    <p className="text-sm text-red-500">{errors.phone}</p>
+                                                    <p className="text-sm text-destructive">{errors.phone}</p>
                                                 )}
                                             </div>
 
                                             {/* Message Field */}
                                             <div className="space-y-2">
                                                 <Label htmlFor="message">
-                                                    Message <span className="text-red-500">*</span>
+                                                    Message <span className="text-destructive">*</span>
                                                 </Label>
                                                 <Textarea
                                                     id="message"
@@ -308,10 +308,10 @@ export default function ContactPage() {
                                                     onChange={handleChange}
                                                     placeholder="Tell us how we can help you..."
                                                     rows={5}
-                                                    className={errors.message ? "border-red-500" : ""}
+                                                    className={errors.message ? "border-destructive" : ""}
                                                 />
                                                 {errors.message && (
-                                                    <p className="text-sm text-red-500">
+                                                    <p className="text-sm text-destructive">
                                                         {errors.message}
                                                     </p>
                                                 )}

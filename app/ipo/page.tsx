@@ -16,7 +16,7 @@ const currentIPOs = [
     lotSize: "100 shares",
     issueSize: "₹500 Cr",
     status: "Open",
-    statusColor: "bg-green-500",
+    statusColor: "bg-success",
   },
   {
     company: "Stellar Manufacturing",
@@ -26,7 +26,7 @@ const currentIPOs = [
     lotSize: "50 shares",
     issueSize: "₹750 Cr",
     status: "Open",
-    statusColor: "bg-green-500",
+    statusColor: "bg-success",
   },
   {
     company: "Urban Logistics Co",
@@ -36,7 +36,7 @@ const currentIPOs = [
     lotSize: "75 shares",
     issueSize: "₹350 Cr",
     status: "Open",
-    statusColor: "bg-green-500",
+    statusColor: "bg-success",
   },
 ];
 
@@ -49,7 +49,7 @@ const upcomingIPOs = [
     lotSize: "50 shares",
     issueSize: "₹800 Cr",
     status: "Upcoming",
-    statusColor: "bg-blue-500",
+    statusColor: "bg-primary",
   },
   {
     company: "Digital Payments Inc",
@@ -59,7 +59,7 @@ const upcomingIPOs = [
     lotSize: "30 shares",
     issueSize: "₹1,200 Cr",
     status: "Upcoming",
-    statusColor: "bg-blue-500",
+    statusColor: "bg-primary",
   },
   {
     company: "Healthcare Solutions",
@@ -69,7 +69,7 @@ const upcomingIPOs = [
     lotSize: "80 shares",
     issueSize: "₹600 Cr",
     status: "Upcoming",
-    statusColor: "bg-blue-500",
+    statusColor: "bg-primary",
   },
 ];
 

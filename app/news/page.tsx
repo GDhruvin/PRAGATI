@@ -74,11 +74,11 @@ export default function NewsPage() {
   const getSentimentColor = (sentiment: string) => {
     switch (sentiment) {
       case "positive":
-        return "text-green-600";
+        return "text-success";
       case "negative":
-        return "text-red-600";
+        return "text-destructive";
       default:
-        return "text-yellow-600";
+        return "text-warning";
     }
   };
 

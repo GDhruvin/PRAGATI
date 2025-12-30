@@ -36,8 +36,8 @@ export function Ticker({ data = [] }: TickerProps) {
             <span className="text-muted-foreground">{item.formattedPrice || item.price}</span>
             <span
               className={`flex items-center gap-1 ${item.isPositive !== undefined
-                ? (item.isPositive ? "text-green-600" : "text-red-600")
-                : (item.positive ? "text-green-600" : "text-red-600")
+                ? (item.isPositive ? "text-success" : "text-destructive")
+                : (item.positive ? "text-success" : "text-destructive")
                 }`}
             >
               {item.isPositive !== undefined ? (

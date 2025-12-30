@@ -128,15 +128,15 @@ export default function Home() {
     const total = Object.values(industryCounts).reduce((a, b) => a + b, 0);
 
     const COLORS = [
-      "#2563eb", // Blue
-      "#7c3aed", // Purple
-      "#059669", // Green
-      "#dc2626", // Red
-      "#ea580c", // Orange
-      "#0891b2", // Cyan
-      "#4f46e5", // Indigo
-      "#65a30d", // Lime
-      "#db2777", // Pink
+      "#1F7A5C", // Primary Green
+      "#C9A44C", // Gold Accent
+      "#145A46", // Deep Emerald
+      "#E3C77A", // Soft Gold
+      "#2ECC71", // Success Green
+      "#E74C3C", // Error Red
+      "#F1C40F", // Warning Yellow
+      "#A6ADB4", // Secondary Text
+      "#6F7A83", // Tertiary Text
     ];
 
     return Object.entries(industryCounts).map(([name, count], index) => ({
@@ -194,10 +194,10 @@ export default function Home() {
                           <TableCell className="text-right">
                             {item.formattedPrice}
                           </TableCell>
-                          <TableCell className={`text-right ${item.isPositive ? "text-green-600" : "text-red-600"}`}>
+                          <TableCell className={`text-right ${item.isPositive ? "text-success" : "text-destructive"}`}>
                             {item.formattedChange}
                           </TableCell>
-                          <TableCell className={`text-right ${item.isPositive ? "text-green-600" : "text-red-600"}`}>
+                          <TableCell className={`text-right ${item.isPositive ? "text-success" : "text-destructive"}`}>
                             {item.isPositive ? <TrendingUp className="inline h-3 w-3 mr-1" /> : <TrendingDown className="inline h-3 w-3 mr-1" />}
                             {item.changePercent}%
                           </TableCell>
@@ -231,7 +231,7 @@ export default function Home() {
                     data={navPerformanceData}
                     margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
                   >
-                    <CartesianGrid strokeDasharray="4 4" stroke="black" />
+                    <CartesianGrid strokeDasharray="4 4" stroke="hsl(var(--border))" opacity={0.3} />
                     <XAxis
                       dataKey="date"
                       tick={{ fontSize: 11 }}
@@ -245,31 +245,32 @@ export default function Home() {
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: "rgba(255,255,255,0.95)",
-                        border: "1px solid #e5e7eb",
+                        backgroundColor: "hsl(var(--popover))",
+                        border: "1px solid hsl(var(--border))",
                         borderRadius: "8px",
+                        color: "hsl(var(--popover-foreground))",
                       }}
                       formatter={(value: number) => `${value.toFixed(1)}%`}
                     />
                     <Legend verticalAlign="top" height={36} iconType="line" />
 
-                    {/* "P₹AGATI" Fund – Green (Winner) */}
+                    {/* "P₹AGATI" Fund – Primary Green */}
                     <Line
                       type="monotone"
                       dataKey="P₹AGATI"
-                      stroke="#10b981"
+                      stroke="#1F7A5C"
                       strokeWidth={4}
-                      activeDot={{ r: 8, stroke: "#10b981", strokeWidth: 3 }}
+                      activeDot={{ r: 8, stroke: "#1F7A5C", strokeWidth: 3 }}
                       name="P₹AGATI Fund"
                     />
 
-                    {/* Nifty 50 – Red (Benchmark) */}
+                    {/* Nifty 50 – Gold Accent */}
                     <Line
                       type="monotone"
                       dataKey="Nifty50"
-                      stroke="#ef4444"
+                      stroke="#C9A44C"
                       strokeWidth={3}
-                      activeDot={{ r: 7, stroke: "#ef4444", strokeWidth: 2 }}
+                      activeDot={{ r: 7, stroke: "#C9A44C", strokeWidth: 2 }}
                       name="Nifty 50"
                     />
                   </LineChart>
@@ -293,7 +294,7 @@ export default function Home() {
                     data={returnsComparisonData}
                     margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
                   >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
                     <XAxis
                       dataKey="period"
                       angle={-45}
@@ -311,21 +312,22 @@ export default function Home() {
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: "rgba(255,255,255,0.95)",
-                        border: "1px solid #ccc",
+                        backgroundColor: "hsl(var(--popover))",
+                        border: "1px solid hsl(var(--border))",
+                        color: "hsl(var(--popover-foreground))",
                       }}
                       formatter={(value: number) => `${value.toFixed(1)}%`}
                     />
                     <Legend />
                     <Bar
                       dataKey="P₹AGATI"
-                      fill="#8b5cf6"
+                      fill="#1F7A5C"
                       radius={[8, 8, 0, 0]}
                       name="P₹AGATI Fund"
                     />
                     <Bar
                       dataKey="Nifty50"
-                      fill="#93c5fd"
+                      fill="#C9A44C"
                       radius={[8, 8, 0, 0]}
                       name="Nifty 50"
                     />
@@ -358,7 +360,7 @@ export default function Home() {
                         cy="50%"
                         labelLine={false}
                         outerRadius={150}
-                        fill="#8884d8"
+                        fill="hsl(var(--primary))"
                         dataKey="value"
                         label={({ name, percent }) =>
                           `${name} ${(percent * 100).toFixed(0)}%`
@@ -432,9 +434,9 @@ export default function Home() {
                               </p>
                             </div>
                             {item.negative ? (
-                              <TrendingDown className="h-5 w-5 text-red-600 flex-shrink-0" />
+                              <TrendingDown className="h-5 w-5 text-destructive flex-shrink-0" />
                             ) : (
-                              <TrendingUp className="h-5 w-5 text-green-600 flex-shrink-0" />
+                              <TrendingUp className="h-5 w-5 text-success flex-shrink-0" />
                             )}
                           </div>
                         ))}
@@ -589,10 +591,10 @@ export default function Home() {
               </Card>
 
               {/* Full Disclaimer */}
-              <Card className="border-amber-500/50 bg-amber-50/10">
+              <Card className="border-warning/30 bg-warning/10">
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <AlertCircle className="h-5 w-5 text-amber-600" />
+                    <AlertCircle className="h-5 w-5 text-warning" />
                     <CardTitle>Disclaimer</CardTitle>
                   </div>
                 </CardHeader>

@@ -111,14 +111,14 @@ export function MarketData() {
                       </TableCell>
                       <TableCell
                         className={`text-right font-medium whitespace-nowrap ${
-                          index.isPositive ? "text-green-600" : "text-red-600"
+                          index.isPositive ? "text-success" : "text-destructive"
                         }`}
                       >
                         {index.change}
                       </TableCell>
                       <TableCell
                         className={`text-right font-medium whitespace-nowrap ${
-                          index.isPositive ? "text-green-600" : "text-red-600"
+                          index.isPositive ? "text-success" : "text-destructive"
                         }`}
                       >
                         <div className="flex items-center justify-end gap-1">
@@ -146,10 +146,10 @@ export function MarketData() {
                       key={indicator.label}
                       className={`${
                         indicator.trend === "negative"
-                          ? "border-red-200 bg-red-50/50 dark:border-red-900/30 dark:bg-red-950/20"
+                          ? "border-destructive/30 bg-destructive/10"
                           : indicator.trend === "positive"
-                          ? "border-green-200 bg-green-50/50 dark:border-green-900/30 dark:bg-green-950/20"
-                          : "border-blue-200 bg-blue-50/50 dark:border-blue-900/30 dark:bg-blue-950/20"
+                          ? "border-success/30 bg-success/10"
+                          : "border-warning/30 bg-warning/10"
                       }`}
                     >
                       <CardContent className="flex items-center justify-between p-4 gap-3">
@@ -164,10 +164,10 @@ export function MarketData() {
                         <Icon
                           className={`h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0 ${
                             indicator.trend === "negative"
-                              ? "text-red-600"
+                              ? "text-destructive"
                               : indicator.trend === "positive"
-                              ? "text-green-600"
-                              : "text-blue-600"
+                              ? "text-success"
+                              : "text-warning"
                           }`}
                         />
                       </CardContent>
